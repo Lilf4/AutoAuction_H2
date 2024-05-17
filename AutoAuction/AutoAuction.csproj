@@ -23,4 +23,14 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Views\HomeView.axaml.cs">
+      <DependentUpon>HomeView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UserCreationView.axaml.cs">
+      <DependentUpon>UserCreationView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
