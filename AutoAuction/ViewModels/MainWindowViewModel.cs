@@ -1,8 +1,20 @@
-﻿namespace AutoAuction.ViewModels;
+﻿using ReactiveUI;
+
+namespace AutoAuction.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+    private ViewModelBase currViewModel;
+    public ViewModelBase CurrViewModel {
+        get => currViewModel;
+        set => this.RaiseAndSetIfChanged(ref currViewModel, value);
+    }
+
+    public static MainWindowViewModel? Instance { get; set; }
+    public MainWindowViewModel() {
+        if(Instance == null) {
+            Instance = this;
+        }
+        CurrViewModel = new LoginViewModel();
+    }
 }
