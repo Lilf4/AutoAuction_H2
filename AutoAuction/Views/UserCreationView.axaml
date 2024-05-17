@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			  xmlns:vm="using:AutoAuction.ViewModels"
+			 x:DataType="vm:UserCreationViewModel"
+             x:Class="AutoAuction.Views.UserCreationView">
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+		<Label>Create user</Label>
+		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
+		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
+		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
+		<WrapPanel Margin="0, 5, 0, 5">
+			<RadioButton>Coporate</RadioButton>
+			<RadioButton>Private</RadioButton>
+		</WrapPanel>
+		<WrapPanel>
+			<Button>Cancel</Button>
+			<Button>Create</Button>
+		</WrapPanel>
+	</StackPanel>
+</UserControl>
