@@ -6,10 +6,19 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <ApplicationIcon>Assets\AutoAuction_Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\AutoAuction_Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\AutoAuction_Icon.ico" />
   </ItemGroup>
 
 
@@ -32,5 +41,10 @@
     <Compile Update="Views\UserCreationView.axaml.cs">
       <DependentUpon>UserCreationView.axaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Docs\Getting Started\" />
   </ItemGroup>
 </Project>

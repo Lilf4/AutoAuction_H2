@@ -9,8 +9,8 @@
 	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 		<Label>Create user</Label>
 		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
-		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
-		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
+		<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5"></TextBox>
+		<TextBox Text="" Watermark="Password (again)" Margin="0, 5, 0, 5"></TextBox>
 		<WrapPanel Margin="0, 5, 0, 5">
 			<RadioButton>Coporate</RadioButton>
 			<RadioButton>Private</RadioButton>
