@@ -43,6 +43,8 @@
 	-- Log Profile Deletion
 	-- Log Auction Creation
 	-- Log Auction Ending
+	-- Log Succesful Logins
+	-- Roles
 -----------------------------------
 -- DROP TABLES + DATABASE IF EXISTS
 -----------------------------------
@@ -588,5 +590,4 @@ CREATE LOGIN NewUserCreator WITH PASSWORD = 'Creator123!';
 
 	USE AutoAuctionDB;
 	CREATE USER NewUserCreator FOR LOGIN NewUserCreator;
-
 	ALTER ROLE UserCreatorRole ADD MEMBER NewUserCreator;
