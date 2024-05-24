@@ -64,7 +64,7 @@ namespace AutoAuction.Models {
         public bool TowHook { get; set; }
 
         //No comment
-        public abstract LicenseTypes LicenseType { get; set; }
+        public LicenseTypes LicenseType { get; set; }
 
         //Allowed motor size for personal cars is 0.7 to 10.0
         //Allowed motor size for trucks and busses is 4.2 to 15.0
@@ -141,7 +141,7 @@ namespace AutoAuction.Models {
             }
         }
 
-        public Vehicle(int id = 0, string name = "", int kmDriven = 0, string regCode = "", int year = 0, bool towHook = false, double kmPerUnit = 0, FuelTypes fuelType = FuelTypes.Benzin) {
+        public Vehicle(int id, string name, int kmDriven, string regCode, int year, bool towHook, double kmPerUnit, FuelTypes fuelType) {
             this.ID = id;
             this.Name = name;
             this.KmDriven = kmDriven;
