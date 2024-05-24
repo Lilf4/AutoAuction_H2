@@ -24,7 +24,7 @@ namespace AutoAuction.Models {
         //Should throw exception on negative set
         private int kmDriven;
         public int KmDriven {
-            get => KmDriven;
+            get => kmDriven;
             set {
                 if (value < 0) {
                     throw new ArgumentOutOfRangeException("KmDriven cannot be negative");
