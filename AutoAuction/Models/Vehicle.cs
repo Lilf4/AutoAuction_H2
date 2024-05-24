@@ -24,7 +24,7 @@ namespace AutoAuction.Models {
         //Should throw exception on negative set
         private int kmDriven;
         public int KmDriven {
-            get => KmDriven;
+            get => kmDriven;
             set {
                 if (value < 0) {
                     throw new ArgumentOutOfRangeException("KmDriven cannot be negative");
@@ -64,7 +64,7 @@ namespace AutoAuction.Models {
         public bool TowHook { get; set; }
 
         //No comment
-        public abstract LicenseTypes LicenseType { get; set; }
+        public LicenseTypes LicenseType { get; set; }
 
         //Allowed motor size for personal cars is 0.7 to 10.0
         //Allowed motor size for trucks and busses is 4.2 to 15.0

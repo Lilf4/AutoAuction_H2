@@ -14,6 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Remove="Docs\**" />
+    <Compile Remove="Docs\**" />
+    <EmbeddedResource Remove="Docs\**" />
+    <None Remove="Docs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\AutoAuction_Icon.ico" />
   </ItemGroup>
 
@@ -31,20 +38,19 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.5" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+	<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.5" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <Compile Update="Views\SetForSaleView.axaml.cs">
+      <DependentUpon>SetForSaleView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HomeView.axaml.cs">
       <DependentUpon>HomeView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\UserCreationView.axaml.cs">
       <DependentUpon>UserCreationView.axaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Docs\Getting Started\" />
   </ItemGroup>
 </Project>

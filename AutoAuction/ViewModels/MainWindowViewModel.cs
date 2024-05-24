@@ -10,7 +10,7 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref currViewModel, value);
     }
 
-    public static MainWindowViewModel? Instance { get; set; }
+    public static MainWindowViewModel Instance { get; set; }
     public MainWindowViewModel() {
         if(Instance == null) {
             Instance = this;

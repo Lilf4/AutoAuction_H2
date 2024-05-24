@@ -6,7 +6,35 @@
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:HomeViewModel"
              x:Class="AutoAuction.Views.HomeView">
-	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-		<Label>Still to be decided</Label>
-	</StackPanel>
+	<Grid ShowGridLines="False">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="4*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="4*"/>
+		</Grid.RowDefinitions>
+
+		
+		<StackPanel 
+			Grid.Column="1"
+			Grid.Row="0"
+			Grid.RowSpan="2"
+			VerticalAlignment="Center" 
+			HorizontalAlignment="Center">
+				<Button Content="+ Create Auction"/>
+				<Button Content="User Profile"/>
+				<Button Content="Search Auctions"/>
+		</StackPanel>
+
+		<Label VerticalAlignment="Center" Content="Your Auctions"/>
+		<DataGrid Grid.Row="1" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All"/>
+		<Label Grid.Row="2" VerticalAlignment="Center" Content="Your Bids"/>
+		<DataGrid Grid.Row="3" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All"/>
+
+	</Grid>
 </UserControl>

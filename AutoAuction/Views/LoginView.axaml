@@ -3,8 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-			  xmlns:vm="using:AutoAuction.ViewModels"
-			 x:DataType="vm:LoginViewModel"
+						 xmlns:vm="using:AutoAuction.ViewModels"
+						 x:DataType="vm:LoginViewModel"
              x:Class="AutoAuction.Views.LoginView">
 	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 		<Label>Log in</Label>
@@ -12,8 +12,8 @@
 		<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5"/>
 		<WrapPanel Margin="0, 5, 0, 5">
 			<Label>Not registered?</Label>
-			<Button Content="Create user" Command=""/>
+			<Button Content="Create user" Command="{Binding CreateUser}"/>
 		</WrapPanel>
-		<Button Content="Log in" Command="" HorizontalAlignment="Right" Margin="0, 5, 0, 5"/>
+		<Button Content="Log in" Command="{Binding Login}" HorizontalAlignment="Right" Margin="0, 5, 0, 5"/>
 	</StackPanel>
 </UserControl>
