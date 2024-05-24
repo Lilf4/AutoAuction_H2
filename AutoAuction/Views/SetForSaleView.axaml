@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			  xmlns:vm="using:AutoAuction.ViewModels"
+			 x:DataType="vm:SetForSaleViewModel"
+             x:Class="AutoAuction.Views.SetForSaleView">
+	<Grid ShowGridLines="False">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="4*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+
+		<Label VerticalAlignment="Center" Content="Set for sale"/>
+		
+		<StackPanel 
+			Grid.Column="0"
+			Grid.Row="1"
+			VerticalAlignment="Center" 
+			HorizontalAlignment="Center">
+			<WrapPanel Width="200">
+				<Label>Name</Label>
+				<TextBox HorizontalAlignment="Right"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label>Milage</Label>
+				<TextBox/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label>Reg. num</Label>
+				<TextBox/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label>Year</Label>
+				<ComboBox></ComboBox>
+			</WrapPanel>
+		</StackPanel>
+
+		<StackPanel
+			Grid.Column="0"
+			Grid.Row="2"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center">
+			<WrapPanel Width="200">
+				<Label>Starting bid</Label>
+				<TextBox/>
+
+			</WrapPanel>
+			<WrapPanel>
+				<Label>Close Auction</Label>
+				<CalendarDatePicker/>
+			</WrapPanel>
+		</StackPanel>
+
+		<Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" BorderBrush="Red" BorderThickness="2">
+			<Panel Grid.Column="1" Grid.Row="1">
+				
+			</Panel>
+		</Border>
+
+		<Button Margin="10" Grid.Column="0" Grid.Row="3">Cancel</Button>
+		<Button Margin="10" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="3">Create Auction</Button>
+	</Grid>
+</UserControl>

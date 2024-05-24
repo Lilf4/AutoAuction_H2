@@ -36,6 +36,9 @@
 
 
   <ItemGroup>
+    <Compile Update="Views\SetForSaleView.axaml.cs">
+      <DependentUpon>SetForSaleView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HomeView.axaml.cs">
       <DependentUpon>HomeView.axaml</DependentUpon>
     </Compile>
