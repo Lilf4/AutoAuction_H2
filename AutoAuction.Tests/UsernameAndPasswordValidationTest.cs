@@ -34,7 +34,6 @@ public class UsernameAndPasswordValidationTest {
     [InlineData("user@subdomain.domain.com", "")]
     [InlineData("user@domain.co.uk", "")]
     [Trait("User - Email Validation", "Valid Emails")]
-
     public void IsValidEmail_ValidateEmail(string email, string expectedErrorMessage) {
         // Arrange
         var user = new User(1, "test@example.com", 12345, 100);
