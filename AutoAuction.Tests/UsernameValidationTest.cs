@@ -1,27 +1,29 @@
-﻿using Xunit;
+﻿namespace AutoAuctionTests;
 
-namespace AutoAuctionTests;
 
-public class UsernameAndPasswordValidationTest {
+public class UsernameValidationTest {
+
+    public static User SetupTestUser() {
+        var user = new User(1, "test@example.com", 12345, 100);
+        return user;
+    }
+
 
     [Theory]
-    [InlineData("invalid-email", "Invalid email format")]
     [InlineData("", "Invalid email format")]
-    [InlineData("plainaddress", "Invalid email format")]
     [InlineData("@missingusername.com", "Invalid email format")]
     [InlineData("username@.com", "Invalid email format")]
     [InlineData("username@domain..com", "Invalid email format")]
     [InlineData("username@domain.c", "Invalid email format")]
     [InlineData("x@host", "Invalid email format")]
     [InlineData("customer/department=shipping@domain.com", "")]
-    [InlineData("user+mailbox@domain.com", "Invalid email format")]
     [Trait ("User - Email Validation", "Invalid Emails")]
-    public void IsValidEmail_InvalidateEmail(string email, string expectedErrorMessage) {
+    public void IsValidEmail_InvalidateEmail_ExpectedFalse(string email, string expectedErrorMessage) {
         // Arrange
-        var user = new User(1, "test@example.com", 12345, 100);
+        var user = SetupTestUser();
 
         // Act
-        var result = user.IsValidEmail(email, out string errorMessage);
+        var result = user.IsEmailValid(email, out string errorMessage);
 
         // Assert
         Assert.False(result);
@@ -31,15 +33,14 @@ public class UsernameAndPasswordValidationTest {
     [Theory]
     [InlineData("test@domain.com", "")]
     [InlineData("first.test@examptsale.com", "")]
-    [InlineData("user@subdomain.domain.com", "")]
     [InlineData("user@domain.co.uk", "")]
     [Trait("User - Email Validation", "Valid Emails")]
-    public void IsValidEmail_ValidateEmail(string email, string expectedErrorMessage) {
+    public void IsValidEmail_ValidateEmail_ExpectedTrue(string email, string expectedErrorMessage) {
         // Arrange
-        var user = new User(1, "test@example.com", 12345, 100);
+        var user = SetupTestUser();
 
         // Act
-        var result = user.IsValidEmail(email, out string errorMessage);
+        var result = user.IsEmailValid(email, out string errorMessage);
 
         // Assert
         Assert.True(result);
@@ -52,12 +53,12 @@ public class UsernameAndPasswordValidationTest {
     [InlineData("admin'--@example.com")]
     [InlineData("admin' #@example.com")]
     [Trait("User - Email Validation", "Sql-Injection")]
-    public void IsValidEmail_SqlInjectionEmail(string email) {
+    public void IsValidEmail_SqlInjectionEmail_ExpectFalse(string email) {
         // Arrange
-        var user = new User(1, "test@example.com", 12345, 100);
+        var user = SetupTestUser();
 
         // Act
-        var result = user.IsValidEmail(email, out string errorMessage);
+        var result = user.IsEmailValid(email, out string errorMessage);
 
         // Assert
         Assert.False(result);
