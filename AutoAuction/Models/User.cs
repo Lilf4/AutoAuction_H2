@@ -10,12 +10,12 @@ using static AutoAuction.Models.Vehicle;
 namespace AutoAuction.Models {
     public class User {
         public int Id { get; set; }
-        
+
         // Has to be in the form of an email address
         public string UserName { get; set; }
         public int Postcode { get; set; }
-        
-        // Has to be negative
+
+        // Can't be negative
         public decimal Balance { get; set; }
 
 
@@ -30,8 +30,10 @@ namespace AutoAuction.Models {
             return $"User: ID{Id}, Username: {UserName}, Postcode: {Postcode}";
         }
 
-        public bool IsValidEmail(string emailaddress, out string errorMessage) {
-            
+
+
+        public bool IsEmailValid(string emailaddress, out string errorMessage) {
+
             if (string.IsNullOrWhiteSpace(emailaddress)) {
                 errorMessage = "Invalid email format";
                 return false;
@@ -55,9 +57,9 @@ namespace AutoAuction.Models {
             }
         }
 
-        
 
-        public bool IsValidPassword(string password, out string errorMessage) {
+
+        public bool IsPasswordValid(string password, out string errorMessage) {
             errorMessage = string.Empty;
 
             if (string.IsNullOrWhiteSpace(password)) {
