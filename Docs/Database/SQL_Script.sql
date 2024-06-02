@@ -4,7 +4,7 @@
 -- Create AutoAuctionDB Database
 	-- Contains:
 		-- Database creation script
-		-- Tables (10)
+		-- Tables (14)
 			-- 1. Users
 			-- 2. CorporateUsers
 			-- 3. PrivateUsers
@@ -15,6 +15,10 @@
 			-- 8. Truck
 			-- 9. PrivatePersonalCars
 			-- 10. ProfessionalCars
+			-- 11. Auctions
+			-- 12. ActiveAuctions
+			-- 13. FinishedAuctions
+			-- 14. Bids
 		-- Stored Procedures (4)
 			-- 1. InsertPrivatePersonalCar_sp
 			-- 2. InsertProfessionalCar_sp
@@ -63,8 +67,30 @@ USE AutoAuctionDB;
 GO
 
 ---------------------------------
--- TABLES - Users + Vehicles
+-- TABLES - named in pluralform
 ---------------------------------
+-- Contains:
+	-- User tables:
+		-- Users
+		-- CorporateUsers
+		-- PrivateUsers
+	-- Vehicle tables:
+		-- Vehicles
+		-- HeavyVehicles
+		-- PersonalCars
+		-- Buses
+		-- Trucks
+		-- PrivatePersonalCars
+		-- ProfessionalCars
+	-- Auction tables
+		-- Auctions 
+		-- ActiveAuctions
+		-- FinishedAuctions
+		-- Bids
+
+--------------
+-- USER TABLES
+--------------
 CREATE TABLE Users (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	Username VARCHAR(50) UNIQUE ,
@@ -87,6 +113,9 @@ CREATE TABLE PrivateUsers (
 	CPR VARCHAR(11) NOT NULL
 );
 
+-----------------
+-- VEHICLE TABLES
+-----------------
 CREATE TABLE Vehicles (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	Name NVARCHAR(100) NOT NULL,
@@ -118,16 +147,16 @@ CREATE TABLE PersonalCars (
 	BootSize INT, -- Indicates Volume (Liters)
 	);
 
-CREATE TABLE Bus (
+CREATE TABLE Buses (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	HeavyVehicleID INT UNIQUE,
 	FOREIGN KEY (HeavyVehicleID) REFERENCES HeavyVehicles(Id),
 	NumberOfSeats TINYINT NOT NULL,
 	NumberOfSleepingSpots TINYINT NOT NULL,
-	Toilet BIT NOT NULL -- 1 = Yes - 0 = No
+	Toilet BIT NOT NULL -- 1 = Yes // 0 = No
 	);
 
-CREATE TABLE Truck (
+CREATE TABLE Trucks (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	HeavyVehicleID INT UNIQUE,
 	FOREIGN KEY (HeavyVehicleID) REFERENCES HeavyVehicles(Id),
@@ -147,6 +176,39 @@ CREATE TABLE ProfessionalCars (
 	FOREIGN KEY (PersonalCarID) REFERENCES PersonalCars(Id),
 	SafetyBar BIT NOT NULL,
 	LoadCapacity INT NOT NULL
+	);
+
+-----------------
+-- AUCTION TABLES
+-----------------
+	CREATE TABLE Auctions (
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	SellerID INT,
+	FOREIGN KEY (SellerID) REFERENCES Users(Id),
+	VehicleID INT,
+	FOREIGN KEY (VehicleID) REFERENCES Vehicles(Id),
+	MinimumPrice DECIMAL NOT NULL
+	);
+
+	CREATE TABLE ActiveAuctions (
+	id INT PRIMARY KEY IDENTITY (1,1),
+	AuctionID INT,
+	FOREIGN KEY (AuctionID) REFERENCES Auctions(Id)
+	);
+
+	CREATE TABLE FinishedAuctions (
+	id INT PRIMARY KEY IDENTITY (1,1),
+	AuctionID INT,
+	FOREIGN KEY (AuctionID) REFERENCES Auctions(Id)
+	);
+
+	CREATE TABLE Bids (
+	id INT PRIMARY KEY IDENTITY (1,1),
+	AuctionID INT,
+	FOREIGN KEY (AuctionID) REFERENCES Auctions(Id),
+	BidderID INT,
+	FOREIGN KEY (BidderID) REFERENCES Users(Id),
+	BidAmount DECIMAL NOT NULL
 	);
 GO;
 
@@ -377,7 +439,7 @@ CREATE PROCEDURE CreateNewUser_sp
 	@CPR VARCHAR(11) = NULL,
 	@CVR VARCHAR(8) = NULL,
 	@Balance DECIMAL(19, 4) = 0,
-	@Credit DECIMAL(19, 4) = 50000
+	@Credit DECIMAL(19, 4) = 50000 -- starting Credit
 AS
 BEGIN
 	SET NOCOUNT ON;
