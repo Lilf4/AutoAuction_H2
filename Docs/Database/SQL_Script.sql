@@ -70,11 +70,11 @@ GO
 -- TABLES - named in pluralform
 ---------------------------------
 -- Contains:
-	-- User tables:
+	-- User-related tables:
 		-- Users
 		-- CorporateUsers
 		-- PrivateUsers
-	-- Vehicle tables:
+	-- Vehicle-related tables:
 		-- Vehicles
 		-- HeavyVehicles
 		-- PersonalCars
@@ -82,7 +82,7 @@ GO
 		-- Trucks
 		-- PrivatePersonalCars
 		-- ProfessionalCars
-	-- Auction tables
+	-- Auction-related tables
 		-- Auctions 
 		-- ActiveAuctions
 		-- FinishedAuctions
