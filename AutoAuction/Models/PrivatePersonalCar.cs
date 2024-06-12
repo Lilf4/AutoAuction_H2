@@ -31,7 +31,7 @@ namespace AutoAuction.Models
         : base(id, name, kmDriven, regCode, year, towhook, kmPerUnit, fuelType, bootSize, numberOfSeats)
         {
             this.Isofix = isofix;
-            LicenseType = LicenseType.B;
+            LicenseType = LicenseTypes.B;
         }
 
         public override string ToString()
