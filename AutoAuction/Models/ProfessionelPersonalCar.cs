@@ -27,7 +27,6 @@ namespace AutoAuction.Models
         : base(id, name, kmDriven, regCode, year, towhook, kmPerUnit, fuelType, bootSize, 2) {
             this.LoadCapacity = LoadCapacity;
             this.SafetyBar = safetyBar;
-            this.NumberofSeats = 2; // This type of car always have only 2 seats.
             
             if (LoadCapacity > 750) {
                 LicenseType = LicenseTypes.BE;
