@@ -19,7 +19,7 @@
 			-- 12. ActiveAuctions
 			-- 13. FinishedAuctions
 			-- 14. Bids
-		-- Stored Procedures (8)
+		-- Stored Procedures (9)
 			-- 1. InsertPrivatePersonalCar_sp
 			-- 2. InsertProfessionalCar_sp
 			-- 3. InsertTruck_sp
@@ -29,7 +29,7 @@
 			-- 7. PlaceBid_sp
 			-- 8. EndAuction_sp
 			-- 9. GetActiveauctions_sp
-		-- Views (6)
+		-- Views (7)
 			-- 1. vw_CorporateUserDetails
 			-- 2. vw_PrivateUserDetails
 			-- 3. vw_PrivateCarDetails
