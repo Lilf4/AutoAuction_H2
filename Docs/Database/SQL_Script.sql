@@ -28,6 +28,7 @@
 			-- 6. CreateAuction_sp
 			-- 7. PlaceBid_sp
 			-- 8. EndAuction_sp
+			-- 9. GetActiveauctions_sp
 		-- Views (6)
 			-- 1. vw_CorporateUserDetails
 			-- 2. vw_PrivateUserDetails
@@ -35,6 +36,7 @@
 			-- 4. vw_ProfessionalCarDetails
 			-- 5. vw_TruckDetails
 			-- 6. vw_BusDetails
+			-- 7. vw_AuctionDetails
 		-- User Roles
 			-- UserCreatorRole
 		-- Logins
@@ -617,6 +619,29 @@ BEGIN
 END;
 GO
 
+------------------------------------------
+-- 9. Get Active Auctions Stored Procedure
+------------------------------------------
+CREATE PROCEDURE GetActiveauctions_sp
+AS
+BEGIN
+	SELECT
+		a.Id AS AuctionID,
+		a.SellerID,
+		u.Username AS SellerUsername,
+		v.id AS VehicleID,
+		v.Name AS BehicleName,
+		a.MinimumPrice
+	FROM
+		ActiveAuctions aa
+	JOIN
+		Auctions a ON aa.AuctionID = a.Id
+	JOIN
+		Users u ON a.SellerId = u.Id
+	JOIN
+		Vehicles v ON a.VehicleID = v.Id;
+END;
+GO
 
 -------------------------
 -- VIEWS - prefixed 'vw_'
