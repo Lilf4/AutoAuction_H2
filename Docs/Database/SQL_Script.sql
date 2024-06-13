@@ -622,16 +622,17 @@ GO
 -- VIEWS - prefixed 'vw_'
 -------------------------
 -- Contains:
-	-- vw_CorporateUserDetails
-	-- vw_PrivateUserDetails
-	-- vw_PrivateCarDetails
-	-- vw_ProfessionalCarDetails
-	-- vw_TruckDetails
-	-- vw_BusDetails
+	-- 1. vw_CorporateUserDetails
+	-- 2. vw_PrivateUserDetails
+	-- 3. vw_PrivateCarDetails
+	-- 4. vw_ProfessionalCarDetails
+	-- 5. vw_TruckDetails
+	-- 6. vw_BusDetails
+	-- 7. vw_AuctionDetails
 
---------------------------
--- vw_CorporateUserDetails
---------------------------
+-----------------------------
+-- 1. vw_CorporateUserDetails
+-----------------------------
 CREATE VIEW vw_CorporateUserDetails AS
 SELECT
     u.Id AS UserID,
@@ -646,9 +647,9 @@ JOIN
     CorporateUsers cu ON u.Username = cu.Username;
 GO
 
-------------------------
--- vw_PrivateUserDetails
-------------------------
+---------------------------
+-- 2. vw_PrivateUserDetails
+---------------------------
 CREATE VIEW vw_PrivateUserDetails AS
 SELECT
     u.Id AS UserID,
@@ -662,9 +663,9 @@ JOIN
     PrivateUsers pu ON u.Username = pu.Username;
 GO
 
------------------------
--- vw_PrivateCarDetails
------------------------
+--------------------------
+-- 3. vw_PrivateCarDetails
+--------------------------
 CREATE VIEW vw_PrivateCarDetails AS
 	SELECT 
 		v.Id AS VehicleID,
@@ -689,9 +690,9 @@ CREATE VIEW vw_PrivateCarDetails AS
 		PrivatePersonalCars ppc ON pc.Id = ppc.PersonalCarID;
 GO
 
-----------------------------
--- vw_ProfessionalCarDetails
-----------------------------
+-------------------------------
+-- 4. vw_ProfessionalCarDetails
+-------------------------------
 CREATE VIEW vw_ProfessionalCarDetails AS
 	SELECT 
 		v.Id AS VehicleID,
@@ -717,9 +718,9 @@ CREATE VIEW vw_ProfessionalCarDetails AS
 		ProfessionalCars pfc ON pc.Id = pfc.PersonalCarID;
 GO
 
-------------------
--- vw_TruckDetails
-------------------
+---------------------
+-- 5. vw_TruckDetails
+---------------------
 CREATE VIEW vw_TruckDetails AS
 	SELECT 
 		v.Id AS VehicleID,
@@ -745,9 +746,9 @@ CREATE VIEW vw_TruckDetails AS
 		Truck t ON hv.Id = t.HeavyVehicleID;
 GO
 
-----------------
--- vw_BusDetails
-----------------
+-------------------
+-- 6. vw_BusDetails
+--------------------
 CREATE VIEW vw_BusDetails AS
 	SELECT 
 		v.Id AS VehicleID,
@@ -775,10 +776,46 @@ CREATE VIEW vw_BusDetails AS
 		Bus b ON hv.Id = b.HeavyVehicleID;
 GO
 
+-----------------------
+-- 7. vw_AuctionDetails
+-----------------------
+CREATE VIEW vw_AuctionDetails AS
+	SELECT
+		a.Id AS AuctionID,
+		a.SellerID,
+		u.Username AS SellerUsername,
+		v.Id AS VehicleID,
+		v.Name AS VehicleName,
+		v.KmDriven,
+		v.RegCode,
+		v.Year,
+		v.TowHook,
+		v.LicenseType,
+		v.MotorSize,
+		v.KmPerUnit,
+		v.FuelType,
+		v.EnergyClass,
+		a.MinimumPrice,
+		CASE
+			WHEN aa.AuctionID IS NOT NULL THEN 'Active'
+			WHEN fa.AuctionID IS NOT NULL THEN 'Finished'
+			ELSE 'Unknown'
+		END AS AuctionStatus
+	FROM
+		Auctions a
+	JOIN
+		Users u ON a.SellerID = u.Id
+	JOIN
+		Vehicles v ON a.VehicleID = v.Id
+	LEFT JOIN
+		ActiveAuctions aa ON a.ID = aa.AuctionID
+	LEFT JOIN
+		FinishedAuctions fa ON a.id = fa.AuctionID;
+GO
 
--------------------------
+-----------------------
 -- ROLES - CreatorRole
--------------------------
+-----------------------
 CREATE ROLE UserCreatorRole;
 GRANT EXECUTE ON OBJECT::dbo.CreateNewUser_sp TO UserCreatorRole;
 GO
@@ -802,12 +839,13 @@ GO
 	-- idx_vehicleid - Vehicles (Id)
 
 -----------------------------------
--- idx_username -  Users (Username)
+-- 1. idx_username -  Users (Username)
 -----------------------------------
 CREATE INDEX idx_username ON Users (Username);
+GO
 
 --------------------------------
--- idx_vehicleid - Vehicles (Id)
+-- 2. idx_vehicleid - Vehicles (Id)
 --------------------------------
 CREATE INDEX idx_vehicleid ON Vehicles (Id);
 GO
