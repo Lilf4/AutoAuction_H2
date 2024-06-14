@@ -269,7 +269,8 @@ GO
 	-- 5. CreateNewUser_sp
 	-- 6. CreateAuction_sp
 	-- 7. PlaceBid_sp
-	-- 8. EndAuction_sp - WIP
+	-- 8. EndAuction_sp
+	-- 9. GetActiveAuctions_sp
 
 --------------------------------------------
 -- 1. InsertPrivatePersonalCar Stored Procedure
