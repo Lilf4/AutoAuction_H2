@@ -60,9 +60,15 @@
 -----------------------------------
 IF EXISTS (SELECT * FROM sys.databases WHERE name = 'AutoAuctionDB')
 BEGIN
+
     DROP DATABASE AutoAuctionDB;
 END
 
+-- DROP LOGIN
+IF EXISTS (SELECT * FROM sys.server_principals WHERE name = 'NewUserCreator')
+BEGIN
+    DROP LOGIN NewUserCreator;
+END
 ------------------
 -- CREATE DATABASE
 ------------------
@@ -768,7 +774,7 @@ CREATE VIEW vw_TruckDetails AS
 	JOIN 
 		HeavyVehicles hv ON v.Id = hv.VehicleID
 	JOIN 
-		Truck t ON hv.Id = t.HeavyVehicleID;
+		Trucks t ON hv.Id = t.HeavyVehicleID;
 GO
 
 -------------------
@@ -798,7 +804,7 @@ CREATE VIEW vw_BusDetails AS
 	JOIN 
 		HeavyVehicles hv ON v.Id = hv.VehicleID
 	JOIN 
-		Bus b ON hv.Id = b.HeavyVehicleID;
+		Buses b ON hv.Id = b.HeavyVehicleID;
 GO
 
 -----------------------
