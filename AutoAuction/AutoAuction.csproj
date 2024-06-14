@@ -43,6 +43,12 @@
 
 
   <ItemGroup>
+    <Compile Update="Views\SellerView.axaml.cs">
+      <DependentUpon>SellerView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BuyerView.axaml.cs">
+      <DependentUpon>BuyerView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SetForSaleView.axaml.cs">
       <DependentUpon>SetForSaleView.axaml</DependentUpon>
     </Compile>
