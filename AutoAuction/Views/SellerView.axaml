@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			  xmlns:vm="using:AutoAuction.ViewModels"
+			 x:DataType="vm:SellerViewModel"
+             x:Class="AutoAuction.Views.SellerView">
+	<Grid ShowGridLines="True">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="2*"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="8*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<Label 
+			Grid.Row="0" 
+			Grid.Column="0" 
+			VerticalAlignment="Center" 
+			Content="Seller of Auction"
+			/>
+		<Label 
+			Grid.Row="1" 
+			Grid.Column="0" 
+			VerticalAlignment="Center" 
+			Content="Auction info"
+			/>
+
+		<Label 
+			Grid.Row="0" Grid.Column="2" 
+			HorizontalAlignment="Right" 
+			VerticalAlignment="Center" 
+			Content="Closing dd/mm/yy"
+			/>
+		<Label 
+			Grid.Row="1" 
+			Grid.Column="2" 
+			HorizontalAlignment="Right" 
+			VerticalAlignment="Center" 
+			Content="Current bid: DKK 00,00"
+			/>
+
+		<StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Label Content="Some Text"/>
+			<Label Content="Some Text"/>
+			<Label Content="Some Text"/>
+			<Label Content="Some Text"/>
+			<Label Content="Some Text"/>
+			<Label Content="Some Text"/>
+			<Label Content="Some Text"/>
+		</StackPanel>
+
+		<Button 
+			Grid.Row="2" 
+			Grid.Column="2" 
+			HorizontalAlignment="Right" 
+			VerticalAlignment="Top" 
+			Content="Accept"
+			/>
+		<Button 
+			Grid.Row="3" 
+			Grid.Column="0" 
+			Content="Back"
+			/>
+
+	</Grid>
+</UserControl>
