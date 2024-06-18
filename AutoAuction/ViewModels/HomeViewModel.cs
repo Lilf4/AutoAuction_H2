@@ -17,5 +17,9 @@ namespace AutoAuction.ViewModels {
             };
             busesObservable = new ObservableCollection<Bus>(buses);
         }
+
+        public void Profile(){
+            MainWindowViewModel.Instance.CurrViewModel = new ProfileViewModel();
+        }
     }
 }
