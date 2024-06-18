@@ -6,11 +6,11 @@
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:ProfileViewModel"
              x:Class="AutoAuction.Views.ProfileView">
-	<Grid ShowGridLines="False"
+	<Grid ShowGridLines="True"
 		  Margin="10">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="3*"/>
-			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="2*"/>
 		</Grid.ColumnDefinitions>
 		
 		<Grid.RowDefinitions>
@@ -21,20 +21,14 @@
 		</Grid.RowDefinitions>
 
 		
-		<StackPanel 
-			Grid.Column="0"
-			Grid.Row="4"
-			VerticalAlignment="Bottom" 
-			HorizontalAlignment="Left">
-				<Button Content="Back"/>
-		</StackPanel>
+				
 
 		<Label 
 			VerticalAlignment="Center" 
 			Content="Your Profile"
 			FontWeight="Bold"/>
 
-		<Grid Grid.Row="1" ShowGridLines="False"
+		<Grid Grid.Row="1" ShowGridLines="True"
 			  Margin="0,0,0,0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*" MinWidth="115"/>
@@ -62,7 +56,7 @@
 			FontWeight="Bold"
 			/>
 
-		<Grid Grid.Row="3" ShowGridLines="False">
+		<Grid Grid.Row="3" ShowGridLines="True">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*" MinWidth="115"/>
 				<ColumnDefinition Width="4*"/>
@@ -78,6 +72,22 @@
 				<Label Content="Test"/>
 				<Label Content="Test2"/>
 			</StackPanel>
+
+			<Button Content="Back"
+						Grid.Column="0"
+						Grid.Row="4"
+						VerticalAlignment="Bottom"
+						HorizontalAlignment="Center"/>
+		</Grid>
+
+		
+		
+		<Grid Grid.Column="1">
+			<Label VerticalAlignment="Center" 
+				   Content="Bid History" 
+				   HorizontalAlignment="Center" 
+				   FontWeight="Bold"/>
+			<DataGrid AutoGenerateColumns="True"/>
 		</Grid>
 	</Grid>
 </UserControl>
