@@ -32,7 +32,7 @@ namespace AutoAuction.Models {
 
 
 
-        public bool IsEmailValid(string emailaddress, out string errorMessage) {
+        public static bool IsEmailValid(string emailaddress, out string errorMessage) {
 
             if (string.IsNullOrWhiteSpace(emailaddress)) {
                 errorMessage = "Invalid email format";
@@ -59,7 +59,7 @@ namespace AutoAuction.Models {
 
 
 
-        public bool IsPasswordValid(string password, out string errorMessage) {
+        public static bool IsPasswordValid(string password, out string errorMessage) {
             errorMessage = string.Empty;
 
             if (string.IsNullOrWhiteSpace(password)) {

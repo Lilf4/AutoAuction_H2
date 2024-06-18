@@ -3,12 +3,6 @@
 
 public class UsernameValidationTest {
 
-    public static User SetupTestUser() {
-        var user = new User(1, "test@example.com", 12345, 100);
-        return user;
-    }
-
-
     [Theory]
     [InlineData("", "Invalid email format")]
     [InlineData("@missingusername.com", "Invalid email format")]
@@ -19,11 +13,8 @@ public class UsernameValidationTest {
     [InlineData("customer/department=shipping@domain.com", "")]
     [Trait ("User - Email Validation", "Invalid Emails")]
     public void IsValidEmail_InvalidateEmail_ExpectedFalse(string email, string expectedErrorMessage) {
-        // Arrange
-        var user = SetupTestUser();
-
         // Act
-        var result = user.IsEmailValid(email, out string errorMessage);
+        var result = User.IsEmailValid(email, out string errorMessage);
 
         // Assert
         Assert.False(result);
@@ -36,11 +27,8 @@ public class UsernameValidationTest {
     [InlineData("user@domain.co.uk", "")]
     [Trait("User - Email Validation", "Valid Emails")]
     public void IsValidEmail_ValidateEmail_ExpectedTrue(string email, string expectedErrorMessage) {
-        // Arrange
-        var user = SetupTestUser();
-
         // Act
-        var result = user.IsEmailValid(email, out string errorMessage);
+        var result = User.IsEmailValid(email, out string errorMessage);
 
         // Assert
         Assert.True(result);
@@ -54,11 +42,8 @@ public class UsernameValidationTest {
     [InlineData("admin' #@example.com")]
     [Trait("User - Email Validation", "Sql-Injection")]
     public void IsValidEmail_SqlInjectionEmail_ExpectFalse(string email) {
-        // Arrange
-        var user = SetupTestUser();
-
         // Act
-        var result = user.IsEmailValid(email, out string errorMessage);
+        var result = User.IsEmailValid(email, out string errorMessage);
 
         // Assert
         Assert.False(result);
