@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			  xmlns:vm="using:AutoAuction.ViewModels"
+			 x:DataType="vm:ProfileViewModel"
+             x:Class="AutoAuction.Views.ProfileView">
+	<Grid ShowGridLines="False"
+		  Margin="10">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="4*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="4*"/>
+		</Grid.RowDefinitions>
+
+		
+		<StackPanel 
+			Grid.Column="0"
+			Grid.Row="4"
+			VerticalAlignment="Bottom" 
+			HorizontalAlignment="Left">
+				<Button Content="Back"/>
+		</StackPanel>
+
+		<Label 
+			VerticalAlignment="Center" 
+			Content="Your Profile"
+			FontWeight="Bold"/>
+
+		<Grid Grid.Row="1" ShowGridLines="False"
+			  Margin="0,0,0,0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" MinWidth="115"/>
+				<ColumnDefinition Width="4*"/>
+			</Grid.ColumnDefinitions>
+			
+
+			<StackPanel Grid.Column="0">
+				<Label Content="Username:" />
+				<Label Content="Balance:"/>
+			</StackPanel>
+
+			
+			<StackPanel Grid.Column="1">
+				<Label Content="{Binding ObservableUser.UserName}"/>
+				<Label Content="{Binding ObservableUser.Balance}"/>
+			</StackPanel>
+		</Grid>
+		
+		<!--Auction Stats-->
+		<Label
+			VerticalAlignment="Center"
+			Content="Auction Statistics" 
+			Grid.Row="2" 
+			FontWeight="Bold"
+			/>
+
+		<Grid Grid.Row="3" ShowGridLines="False">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" MinWidth="115"/>
+				<ColumnDefinition Width="4*"/>
+			</Grid.ColumnDefinitions>
+
+			<StackPanel>
+				<Label Content="Your Auctions"/>
+				<Label Content="Auctions Won"/>
+			</StackPanel>
+
+			<!-- Needs Connection-->
+			<StackPanel Grid.Column="1">
+				<Label Content="Test"/>
+				<Label Content="Test2"/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</UserControl>
