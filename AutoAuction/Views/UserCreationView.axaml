@@ -7,17 +7,19 @@
 			 x:DataType="vm:UserCreationViewModel"
              x:Class="AutoAuction.Views.UserCreationView">
 	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+		<!--TODO: Insert postcode field-->
 		<Label>Create user</Label>
-		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"></TextBox>
-		<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5"></TextBox>
-		<TextBox Text="" Watermark="Password (again)" Margin="0, 5, 0, 5"></TextBox>
+		<TextBox Watermark="Username" Margin="0, 5, 0, 5" Text="{Binding User.UserName}"/>
+		<TextBox Watermark="Password" Margin="0, 5, 0, 5" Text="{Binding User.Password}"/>
+		<TextBox Watermark="Password (again)" Margin="0, 5, 0, 5" Text="{Binding RePassword}"/>
+		<TextBox Watermark="CPR/CVR" Margin="0, 5, 0, 5" Text="{Binding CVPR}"/>
 		<WrapPanel Margin="0, 5, 0, 5">
-			<RadioButton>Coporate</RadioButton>
-			<RadioButton>Private</RadioButton>
+			<RadioButton GroupName="AccType" IsChecked="{Binding IsPrivate}">Private</RadioButton>
+			<RadioButton GroupName="AccType" IsChecked="{Binding IsCorporate}">Corporate</RadioButton>
 		</WrapPanel>
 		<WrapPanel>
-			<Button>Cancel</Button>
-			<Button>Create</Button>
+			<Button Command="{Binding Cancel}" Content="Cancel"/>
+			<Button Command="{Binding CreateUser}" Content="Create"/>
 		</WrapPanel>
 	</StackPanel>
 </UserControl>

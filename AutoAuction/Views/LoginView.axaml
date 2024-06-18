@@ -8,8 +8,8 @@
              x:Class="AutoAuction.Views.LoginView">
 	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 		<Label>Log in</Label>
-		<TextBox Text="" Watermark="Username" Margin="0, 5, 0, 5"/>
-		<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5"/>
+		<TextBox Text="{Binding Username}" Watermark="Username" Margin="0, 5, 0, 5"/>
+		<TextBox Text="{Binding Password}" Watermark="Password" Margin="0, 5, 0, 5"/>
 		<WrapPanel Margin="0, 5, 0, 5">
 			<Label>Not registered?</Label>
 			<Button Content="Create user" Command="{Binding CreateUser}"/>

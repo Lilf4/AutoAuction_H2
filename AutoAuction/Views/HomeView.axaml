@@ -29,6 +29,7 @@
 				<Button Content="User Profile" Command="{Binding Profile}"/>
 				<Button Content="Create Auction"/>
 				<Button Content="Search Auctions"/>
+				<Button Command="{Binding Logout}" Content="Logout"/>
 		</StackPanel>
 
 		<Label VerticalAlignment="Center" Content="Your Auctions"/>
