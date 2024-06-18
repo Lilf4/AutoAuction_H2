@@ -13,6 +13,7 @@
 	-- Testing InsertProfessionalCar_sp
 	-- Testing CreateNewUser_sp - PrivateUser
 	-- Testing CreateNewUser_sp - CorporateUser
+	-- Testing CreateAuction_sp - Bus
 
 -- InsertPrivatePersonalCar_sp
 EXEC InsertPrivatePersonalCar_sp
@@ -29,7 +30,7 @@ EXEC InsertPrivatePersonalCar_sp
 	@NumberOfSeats = 5,
 	@BootSize = 450,
 	@Isofix = 1;
-
+GO
 
 -- InsertProfessionalCar_sp
 EXEC InsertProfessionalCar_sp 
@@ -47,7 +48,7 @@ EXEC InsertProfessionalCar_sp
 	@BootSize = NULL,
 	@SafetyBar = 1,
 	@LoadCapacity = 1200;
-
+GO
 
 -- CreateNewUser_sp - PrivateUser
 EXEC CreateNewUser_sp
@@ -56,7 +57,7 @@ EXEC CreateNewUser_sp
 	@Postcode = '1234',
 	@IsCorporate = 0,
 	@CPR = '123456-9876'
-
+GO
 
 -- CreateNewUser_sp - CorporateUser
 EXEC CreateNewUser_sp
@@ -65,6 +66,54 @@ EXEC CreateNewUser_sp
 	@Postcode = '4321',
 	@IsCorporate = 1,
 	@CVR = '12345678'
+GO
+
+-- Create Auction - BUS
+DECLARE @SellerID INT = 1; -- Example SellerID
+DECLARE @VehicleType NVARCHAR(50) = 'Bus';
+DECLARE @Name NVARCHAR(100) = 'Luxury Bus';
+DECLARE @KmDriven INT = 50000;
+DECLARE @RegCode VARCHAR(7) = 'BUS1234';
+DECLARE @Year INT = 2018;
+DECLARE @TowHook BIT = 0;
+DECLARE @LicenseType TINYINT = 2;
+DECLARE @MotorSize FLOAT = 6.0;
+DECLARE @KmPerUnit FLOAT = 8.5;
+DECLARE @FuelType TINYINT = 1;
+DECLARE @EnergyClass TINYINT = 2;
+DECLARE @Weight INT = 15000;
+DECLARE @Height FLOAT = 4.0;
+DECLARE @Length FLOAT = 12.5;
+DECLARE @NumberOfSeats TINYINT = 50;
+DECLARE @NumberOfSleepingSpots TINYINT = 10;
+DECLARE @Toilet BIT = 1;
+DECLARE @MinimumPrice DECIMAL(19, 4) = 100000.00;
+
+EXEC CreateAuction_sp 
+    @SellerID = @SellerID,
+    @VehicleType = @VehicleType,
+    @Name = @Name,
+    @KmDriven = @KmDriven,
+    @RegCode = @RegCode,
+    @Year = @Year,
+    @TowHook = @TowHook,
+    @LicenseType = @LicenseType,
+    @MotorSize = @MotorSize,
+    @KmPerUnit = @KmPerUnit,
+    @FuelType = @FuelType,
+    @EnergyClass = @EnergyClass,
+    @NumberOfSeats = @NumberOfSeats,
+    @BootSize = NULL, 
+    @Isofix = NULL, 
+    @SafetyBar = NULL, 
+    @LoadCapacity = NULL, 
+    @Weight = @Weight,
+    @Height = @Height,
+    @Length = @Length,
+    @NumberOfSleepingSpots = @NumberOfSleepingSpots,
+    @Toilet = @Toilet,
+    @MinimumPrice = @MinimumPrice;
+
 
 
 ----------------
@@ -78,7 +127,13 @@ EXEC CreateNewUser_sp
 SELECT * 
 	FROM vw_PrivateCarDetails
 	WHERE VehicleID = 1
+GO
 
 -- ProfessionalCarDetails
 SELECT * 
 	FROM vw_ProfessionalCarDetails;
+GO
+
+
+
+

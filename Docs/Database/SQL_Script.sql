@@ -533,19 +533,100 @@ GO
 ----------------------------------
 CREATE PROCEDURE CreateAuction_sp
 	@SellerID INT,
-	@VehicleID INT,
+	@VehicleType NVARCHAR(50), -- Not saved in table
+	@Name NVARCHAR(100),
+	@KmDriven INT,
+	@RegCode VARCHAR(7),
+	@Year INT,
+	@TowHook BIT,
+	@LicenseType TINYINT,
+	@MotorSize FLOAT,
+	@KmPerUnit FLOAT,
+	@FuelType TINYINT,
+	@EnergyClass TINYINT,
+	
+	-- Vehicle specific parameters
+	@NumberOfSeats INT = NULL,
+	@BootSize INT = NULL,
+	@Isofix BIT = NULL,
+	@SafetyBar BIT = NULL,
+	@LoadCapacity INT = NULL,
+	@Weight INT = NULL,
+	@Height FLOAT = NULL,
+	@Length FLOAT = NULL,
+	@NumberOfSleepingSpots TINYINT = NULL,
+	@Toilet BIT = NULL,
+	
 	@MinimumPrice DECIMAL(19, 4)
 AS
 BEGIN
 	BEGIN TRANSACTION;
 
 	BEGIN TRY
+		DECLARE @VehicleID INT;
+		DECLARE @PersonalCarID INT;
+		DECLARE @HeavyVehicleID INT;
+
+		-- Vehicles table
+		INSERT INTO Vehicles (Name, KmDriven, RegCode, Year, TowHook, LicenseType, MotorSize, KmPerUnit, FuelType, EnergyClass)
+		VALUES (@Name, @KmDriven, @RegCode, @Year, @TowHook, @LicenseType, @MotorSize, @KmPerUnit, @FuelType, @EnergyClass);
+
+		SET @VehicleID = SCOPE_IDENTITY();
+
+		--
+		IF @VehicleType = 'ProfessionalCar'
+		BEGIN
+			-- PersonalCar --> ProfessionalCar
+			INSERT INTO PersonalCars (VehicleID, NumberOfSeats, BootSize)
+			VALUES (@VehicleID, @NumberOfSeats, @BootSize);
+
+			SET @PersonalCarID = SCOPE_IDENTITY();
+
+			INSERT INTO ProfessionalCars (PersonalCarID, SafetyBar, LoadCapacity)
+			VALUES (@PersonalCarID, @SafetyBar, @LoadCapacity);
+		END
+		ELSE IF @VehicleType = 'PrivatePersonalCar'
+		BEGIN
+			-- PersonalCar --> PrivatePersonalCar
+			INSERT INTO PersonalCars (VehicleID, NumberOfSeats, BootSize)
+			VALUES (@VehicleID, @NumberOfSeats, @BootSize);
+
+			SET @PersonalCarID = SCOPE_IDENTITY();
+
+			INSERT INTO PrivatePersonalCars (PersonalCarID, Isofix)
+			VALUES (@PersonalCarID, @Isofix);
+		END
+		ELSE IF @VehicleType = 'Truck'
+		BEGIN
+			-- HeavyVehicle --> Truck
+			INSERT INTO HeavyVehicles (VehicleID, Weight, Height, Length)
+			VALUES (@VehicleID, @Weight, @Height, @Length);
+
+			SET @HeavyVehicleID = SCOPE_IDENTITY();
+
+			INSERT INTO Trucks (HeavyVehicleID, LoadCapacity)
+			VALUES (@HeavyVehicleID, @LoadCapacity);
+		END
+		ELSE IF @VehicleType = 'Bus'
+		BEGIN
+			-- HeavyVehicle --> Bus
+			INSERT INTO HeavyVehicles (VehicleID, Weight, Height, Length)
+			VALUES (@VehicleID, @Weight, @Height, @Length);
+
+			SET @HeavyVehicleID = SCOPE_IDENTITY();
+
+			INSERT INTO Buses (HeavyVehicleID, NumberOfSeats, NumberOfSleepingSpots, Toilet)
+			VALUES (@HeavyVehicleID, @NumberOfSeats, @NumberOfSleepingSpots, @Toilet);
+		END
+
+		-- Auctions table
 		INSERT INTO Auctions (SellerID, VehicleID, MinimumPrice)
 		VALUES (@SellerID, @VehicleID, @MinimumPrice);
 
 		DECLARE @AuctionID INT;
 		SET @AuctionID = SCOPE_IDENTITY();
 
+		-- ActiveAuctions table
 		INSERT INTO ActiveAuctions (AuctionID)
 		VALUES (@AuctionID);
 
@@ -812,37 +893,70 @@ GO
 -- 7. vw_AuctionDetails
 -----------------------
 CREATE VIEW vw_AuctionDetails AS
-	SELECT
-		a.Id AS AuctionID,
-		a.SellerID,
-		u.Username AS SellerUsername,
-		v.Id AS VehicleID,
-		v.Name AS VehicleName,
-		v.KmDriven,
-		v.RegCode,
-		v.Year,
-		v.TowHook,
-		v.LicenseType,
-		v.MotorSize,
-		v.KmPerUnit,
-		v.FuelType,
-		v.EnergyClass,
-		a.MinimumPrice,
-		CASE
-			WHEN aa.AuctionID IS NOT NULL THEN 'Active'
-			WHEN fa.AuctionID IS NOT NULL THEN 'Finished'
-			ELSE 'Unknown'
-		END AS AuctionStatus
-	FROM
-		Auctions a
-	JOIN
-		Users u ON a.SellerID = u.Id
-	JOIN
-		Vehicles v ON a.VehicleID = v.Id
-	LEFT JOIN
-		ActiveAuctions aa ON a.ID = aa.AuctionID
-	LEFT JOIN
-		FinishedAuctions fa ON a.id = fa.AuctionID;
+SELECT
+    a.Id AS AuctionID,
+    a.SellerID,
+    u.Username AS SellerUsername,
+    u.PostCode AS SellerPostCode,
+    u.Balance AS SellerBalance,
+    v.Id AS VehicleID,
+    v.Name AS VehicleName,
+    v.KmDriven,
+    v.RegCode,
+    v.Year,
+    v.TowHook,
+    v.LicenseType,
+    v.MotorSize,
+    v.KmPerUnit,
+    v.FuelType,
+    v.EnergyClass,
+    CASE 
+        WHEN ppc.PersonalCarID IS NOT NULL THEN 'PrivatePersonalCar'
+        WHEN pfc.PersonalCarID IS NOT NULL THEN 'ProfessionalCar'
+        WHEN t.HeavyVehicleID IS NOT NULL THEN 'Truck'
+        WHEN b.HeavyVehicleID IS NOT NULL THEN 'Bus'
+        ELSE 'Unknown'
+    END AS VehicleType,
+    pc.NumberOfSeats,
+    pc.BootSize,
+    ppc.Isofix,
+    pfc.SafetyBar,
+    pfc.LoadCapacity AS ProfessionalCarLoadCapacity,
+    hv.Weight,
+    hv.Height,
+    hv.Length,
+    t.LoadCapacity AS TruckLoadCapacity,
+    b.NumberOfSeats AS BusNumberOfSeats,
+    b.NumberOfSleepingSpots,
+    b.Toilet,
+    a.MinimumPrice,
+    CASE
+        WHEN aa.AuctionID IS NOT NULL THEN 'Active'
+        WHEN fa.AuctionID IS NOT NULL THEN 'Finished'
+        ELSE 'Unknown'
+    END AS AuctionStatus
+FROM
+    Auctions a
+JOIN
+    Users u ON a.SellerID = u.Id
+JOIN
+    Vehicles v ON a.VehicleID = v.Id
+LEFT JOIN
+    PersonalCars pc ON v.Id = pc.VehicleID
+LEFT JOIN
+    PrivatePersonalCars ppc ON pc.Id = ppc.PersonalCarID
+LEFT JOIN
+    ProfessionalCars pfc ON pc.Id = pfc.PersonalCarID
+LEFT JOIN
+    HeavyVehicles hv ON v.Id = hv.VehicleID
+LEFT JOIN
+    Trucks t ON hv.Id = t.HeavyVehicleID
+LEFT JOIN
+    Buses b ON hv.Id = b.HeavyVehicleID
+LEFT JOIN
+    ActiveAuctions aa ON a.Id = aa.AuctionID
+LEFT JOIN
+    FinishedAuctions fa ON a.Id = fa.AuctionID;
 GO
 
 -----------------------
