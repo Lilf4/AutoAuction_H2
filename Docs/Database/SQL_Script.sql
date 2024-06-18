@@ -225,7 +225,8 @@ AuctionID INT,
 FOREIGN KEY (AuctionID) REFERENCES Auctions(Id),
 BidderID INT,
 FOREIGN KEY (BidderID) REFERENCES Users(Id),
-BidAmount DECIMAL NOT NULL
+BidAmount DECIMAL NOT NULL,
+TimeOfBid DATETIME
 );
 GO
 
@@ -667,8 +668,8 @@ BEGIN
 			END
 		END
 
-		INSERT INTO Bids (AuctionID, BidderID, BidAmount)
-		VALUES (@AuctionID, @BidderID, @BidAmount);
+		INSERT INTO Bids (AuctionID, BidderID, BidAmount, TimeOfBid)
+		VALUES (@AuctionID, @BidderID, @BidAmount, GETDATE());
 
 		COMMIT TRANSACTION;
 	END TRY
@@ -1064,4 +1065,3 @@ BEGIN
     SELECT AuctionID FROM inserted;
 END;
 GO
-
