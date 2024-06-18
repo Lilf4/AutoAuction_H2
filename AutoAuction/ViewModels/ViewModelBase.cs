@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using AutoAuction.DAL;
+using ReactiveUI;
 
 namespace AutoAuction.ViewModels;
 

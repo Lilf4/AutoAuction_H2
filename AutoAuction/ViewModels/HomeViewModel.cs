@@ -21,5 +21,9 @@ namespace AutoAuction.ViewModels {
         public void Profile(){
             MainWindowViewModel.Instance.CurrViewModel = new ProfileViewModel();
         }
+
+        public void Logout() {
+            MainWindowViewModel.Instance.CurrViewModel = new LoginViewModel();
+        }
     }
 }
