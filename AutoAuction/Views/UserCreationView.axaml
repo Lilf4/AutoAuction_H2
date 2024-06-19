@@ -20,13 +20,17 @@
 				Background="#24252B">
 
 				<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+					<!--TODO: Insert postcode field-->
+
 					<Label Content="Create User" FontSize="24"/>
-					<TextBox Text="" Watermark="Email" Margin="0, 5, 0, 5"></TextBox>
-					<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5"></TextBox>
-					<TextBox Text="" Watermark="Password (again)" Margin="0, 5, 0, 5"></TextBox>
+					<TextBox Text="{Binding User.UserName}" Watermark="Email" Margin="0, 5, 0, 5"></TextBox>
+					<TextBox Text="{Binding User.Password}" Watermark="Password" Margin="0, 5, 0, 5"></TextBox>
+					<TextBox Text="{Binding RePassword}" Watermark="Password (again)" Margin="0, 5, 0, 5"></TextBox>
+					<TextBox Watermark="CPR/CVR" Margin="0, 5, 0, 5" Text="{Binding CVPR}"/>
+
 					<WrapPanel Margin="0, 5, 0, 5" HorizontalAlignment="Center">
-						<RadioButton Content="Coporate" Foreground="White"/>
-						<RadioButton Content="Private" Foreground="White"/>
+						<RadioButton GroupName="AccType" IsChecked="{Binding IsPrivate}" Content="Coporate" Foreground="White"/>
+						<RadioButton GroupName="AccType" IsChecked="{Binding IsCorporate}" Content="Private" Foreground="White"/>
 					</WrapPanel>
 
 					<StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
