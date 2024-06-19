@@ -23,7 +23,7 @@ namespace AutoAuction.Models
         public int LoadCapacity { get; set; }
         public bool SafetyBar { get; set; }
 
-        public ProfessionelPersonalCar(int id, string name, int kmDriven, string regCode, int year, bool towhook, bool safetyBar, double kmPerUnit, FuelTypes fuelType, int bootSize, int LoadCapacity, int numberOfSeats)
+        public ProfessionelPersonalCar(int id, string name, int kmDriven, string regCode, int year, bool towhook, bool safetyBar, double kmPerUnit, FuelTypes fuelType, int bootSize, int LoadCapacity)
         : base(id, name, kmDriven, regCode, year, towhook, kmPerUnit, fuelType, bootSize, 2) {
             this.LoadCapacity = LoadCapacity;
             this.SafetyBar = safetyBar;

@@ -1,8 +1,9 @@
-﻿namespace AutoAuction.DAL {
+﻿using AutoAuction.Models;
+
+namespace AutoAuction.DAL {
     public interface IAuction {
 		void CreateAuction();
 		void PlaceBid();
-        void GetAuction();
-        void SearchAuction();
+        Auction[] SearchAuction(IUser userInterface, IVehicle vehicleInterface);
     }
 }

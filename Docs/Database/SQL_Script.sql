@@ -719,7 +719,7 @@ BEGIN
 		a.SellerID,
 		u.Username AS SellerUsername,
 		v.id AS VehicleID,
-		v.Name AS BehicleName,
+		v.Name AS VehicleName,
 		a.MinimumPrice
 	FROM
 		ActiveAuctions aa
@@ -746,6 +746,65 @@ BEGIN
 	BEGIN
 		SELECT Users.*, PrivateUsers.* FROM Users LEFT JOIN PrivateUsers on Users.Username = PrivateUsers.Username WHERE Users.Username = @Username;
 		RETURN
+	END
+END
+
+--TODO WRITE DESCRIPTION--
+CREATE PROCEDURE GetVehicleDetails_sp
+	@VehicleID INT = 1
+AS
+BEGIN
+	IF NOT EXISTS (SELECT 1 FROM HeavyVehicles WHERE HeavyVehicles.VehicleID = @VehicleID)
+	BEGIN
+		--Personal Vehicle
+		DECLARE @PersonalVehicleID INT;
+		SELECT @PersonalVehicleID = PersonalCars.Id FROM PersonalCars WHERE PersonalCars.VehicleID = @VehicleID;
+		IF NOT EXISTS (SELECT 1 FROM PrivatePersonalCars WHERE PrivatePersonalCars.PersonalCarID = @PersonalVehicleID)
+		BEGIN
+			--Professional Personal
+			SELECT Vehicles.*, PersonalCars.*, ProfessionalCars.*, 'Professional' AS VehicleType 
+			FROM Vehicles 
+			JOIN PersonalCars ON Vehicles.Id = PersonalCars.VehicleID
+			JOIN ProfessionalCars ON ProfessionalCars.PersonalCarID = PersonalCars.Id
+			WHERE VehicleID = @VehicleID
+			RETURN
+		END
+		ELSE
+		BEGIN
+			--Private Personal
+			SELECT Vehicles.*, PersonalCars.*, PrivatePersonalCars.*, 'Private' AS VehicleType 
+			FROM Vehicles 
+			JOIN PersonalCars ON Vehicles.Id = PersonalCars.VehicleID
+			JOIN PrivatePersonalCars ON PrivatePersonalCars.PersonalCarID = PersonalCars.Id
+			WHERE VehicleID = @VehicleID
+			RETURN
+		END
+	END
+	ELSE
+	BEGIN
+		--Heavy Vehicle
+		DECLARE @HeavyVehicleID INT;
+		SELECT @HeavyVehicleID = HeavyVehicles.Id FROM HeavyVehicles WHERE HeavyVehicles.VehicleID = @VehicleID;
+		IF NOT EXISTS (SELECT 1 FROM Trucks WHERE Trucks.HeavyVehicleID = @HeavyVehicleID)
+		BEGIN
+			--Buses
+			SELECT Vehicles.*, HeavyVehicles.*, Buses.*, 'Bus' AS VehicleType 
+			FROM Vehicles 
+			JOIN HeavyVehicles ON Vehicles.Id = HeavyVehicles.VehicleID
+			JOIN Buses ON Buses.HeavyVehicleID = HeavyVehicles.Id
+			WHERE VehicleID = @VehicleID
+			RETURN
+		END
+		ELSE
+		BEGIN
+			--Trucks
+			SELECT Vehicles.*, HeavyVehicles.*, Trucks.*, 'Truck' AS VehicleType 
+			FROM Vehicles 
+			JOIN HeavyVehicles ON Vehicles.Id = HeavyVehicles.VehicleID
+			JOIN Trucks ON Trucks.HeavyVehicleID = HeavyVehicles.Id
+			WHERE VehicleID = @VehicleID
+			RETURN
+		END
 	END
 END
 

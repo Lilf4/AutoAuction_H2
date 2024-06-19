@@ -27,7 +27,7 @@ namespace AutoAuction.Models
 
         public bool Isofix { get; set; }
 
-        public PrivatePersonalCar(int id, string name, int kmDriven, string regCode, int year, bool towhook, bool isofix, double kmPerUnit, FuelTypes fuelType, int bootSize, int LoadCapacity, int numberOfSeats)
+        public PrivatePersonalCar(int id, string name, int kmDriven, string regCode, int year, bool towhook, bool isofix, double kmPerUnit, FuelTypes fuelType, int bootSize, int numberOfSeats)
         : base(id, name, kmDriven, regCode, year, towhook, kmPerUnit, fuelType, bootSize, numberOfSeats)
         {
             this.Isofix = isofix;

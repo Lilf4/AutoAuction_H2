@@ -43,6 +43,9 @@
 
 
   <ItemGroup>
+    <Compile Update="Views\SearchView.axaml.cs">
+      <DependentUpon>SearchView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ProfileView.axaml.cs">
       <DependentUpon>ProfileView.axaml</DependentUpon>
     </Compile>

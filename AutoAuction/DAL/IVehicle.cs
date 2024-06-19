@@ -1,5 +1,7 @@
-﻿namespace AutoAuction.DAL {
+﻿using AutoAuction.Models;
+
+namespace AutoAuction.DAL {
     public interface IVehicle {
-        void GetVehicle();
+        Vehicle? GetVehicle(int ID);
     }
 }

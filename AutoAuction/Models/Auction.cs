@@ -12,15 +12,13 @@ namespace AutoAuction.Models
         public User Seller { get; set; }
         public Vehicle Vehicle { get; set; } 
         public decimal MinimumPrice { get; set; }
-        public DateTime StartDate { get; set; }
         
-        public Auction(int auctionID, User seller, Vehicle vehicle, decimal minimumPrice, DateTime startDate)
+        public Auction(int auctionID, User seller, Vehicle vehicle, decimal minimumPrice)
         {
             AuctionID = auctionID;
             Seller = seller;
             Vehicle = vehicle;
             MinimumPrice = minimumPrice;
-            StartDate = startDate;
         }
     }
 

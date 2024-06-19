@@ -5,32 +5,18 @@ using System.Diagnostics;
 
 namespace AutoAuction.DAL {
     internal class UserR : DBUtil, IUser {
-        public User? Login(string username, string password) {
+        public User? GetUser(string username) {
             User user = new User();
-            user.UserName = username;
-            user.Password = password;
 
-            SqlConnection conn = GetConnection(user);
-            try {
-                conn.Open();
-            }
-            catch (SqlException e) {
-                Debug.WriteLine(e.Message);
-                return null;
-            }
-            finally {
-                conn.Close();
-            }
-
-            conn = GetConnection(MasterUser);
+            SqlConnection conn = GetConnection(MasterUser);
             try {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("GetUserDetails_sp", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Username", user.UserName);
-                
+                cmd.Parameters.AddWithValue("@Username", username);
+
                 SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.HasRows) {
+                if (reader.HasRows) {
                     reader.Read();
                     try {
                         //Corporate
@@ -57,7 +43,6 @@ namespace AutoAuction.DAL {
                         user = privateUser;
                     }
 
-                    user.Password = password;
                     return user;
                 }
                 else {
@@ -71,8 +56,30 @@ namespace AutoAuction.DAL {
             finally {
                 conn.Close();
             }
+        }
+
+        public User? Login(string username, string password) {
+            User user = new User();
+            user.UserName = username;
+            user.Password = password;
+
+            SqlConnection conn = GetConnection(user);
+            try {
+                conn.Open();
+            }
+            catch (SqlException e) {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+            finally {
+                conn.Close();
+            }
+            user = GetUser(username);
+            user.Password = password;
             return user;
         }
+
+
 
         public void Logout() {
             throw new NotImplementedException();
