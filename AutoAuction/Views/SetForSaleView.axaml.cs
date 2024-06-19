@@ -8,4 +8,7 @@ public partial class SetForSaleView : UserControl
     {
         InitializeComponent();
     }
+
+    private void Binding(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+    }
 }

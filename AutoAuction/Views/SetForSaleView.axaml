@@ -53,47 +53,33 @@
 						Spacing="5"
 						Width="175">
 				<!-- Name -->
-				<TextBox Watermark="eg. Skoda Octavia "/>
+				<TextBox Text="{Binding Name}" Watermark="eg. Skoda Octavia "/>
 				
 				<!-- Milage -->
-				<TextBox Watermark="127000"/>
+				<TextBox Text="{Binding KmDriven}" Watermark="127000"/>
 				
 				<!-- Fuel usage per km -->
-				<TextBox Watermark="12"/>
+				<TextBox Text="{Binding KmPerUnit}" Watermark="12"/>
 				
-				<!-- Vehicle Type -->
-				<ComboBox SelectedIndex="0" Width="175">
-					<ComboBoxItem>Benzin</ComboBoxItem>
-					<ComboBoxItem>Diesel</ComboBoxItem>
-					<ComboBoxItem>Electric</ComboBoxItem>
-					<ComboBoxItem>Hydrogen</ComboBoxItem>
-				</ComboBox>
+				<!-- Fuel Type -->
+				<ComboBox ItemsSource="{Binding fuelTypes}" SelectedItem="{Binding FuelType}" SelectedIndex="0" Width="175"/>
 				
 				<!-- Reg. Num. -->
-				<TextBox Watermark="27268188"/>
+				<TextBox Text="{Binding RegCode}" Watermark="27268188"/>
 				<!-- Year -->
-				<ComboBox Width="175" ItemsSource="{Binding YearRange}"/>
+				<ComboBox SelectedItem="{Binding Year}" Width="175" ItemsSource="{Binding YearRange}"/>
 				
 				<!-- Vehicle Type -->
-				<ComboBox SelectedIndex="0" Width="175">
-					<ComboBoxItem Content="-Select Type-"/>
-					<ComboBoxItem Content="Private Car"/>
-					<ComboBoxItem Content="Professional Car"/>
-					<ComboBoxItem Content="Bus"/>
-					<ComboBoxItem Content="Truck"/>
-				</ComboBox>
+				<ComboBox ItemsSource="{Binding vehicleTypes}" SelectedItem="{Binding VehicleType}" SelectedIndex="0" Width="175"/>
 				
 				<!-- Towhook -->
-				<ComboBox SelectedIndex="0" Width="175">
-					<ComboBoxItem>Yes</ComboBoxItem>
-					<ComboBoxItem>No</ComboBoxItem>
-				</ComboBox>
+				<CheckBox IsChecked="{Binding TowHook}"/>
 				
 				<!-- Motor Size -->
-				<TextBox Watermark="7,4"/>
+				<TextBox Text="{Binding MotorSize}" Watermark="7,4"/>
 
 				<!-- Starting Price-->
-				<TextBox/>
+				<TextBox Text="{Binding Price}"/>
 
 			</StackPanel>
 		</Grid>
@@ -159,72 +145,57 @@
 						<TextBox IsEnabled="False"/>
 
 						<!-- Height -->
-						<TextBox />
+						<TextBox Text="{Binding Height}"/>
 
 						<!-- Length -->
-						<TextBox />
+						<TextBox Text="{Binding Length}"/>
 
 						<!-- Weight -->
-						<TextBox />
+						<TextBox Text="{Binding Weight}"/>
 
 						
 						<!-- PERSONAL VEHICLE -->
 						<TextBox IsEnabled="False"/>
 
 						<!-- Number of Seats -->
-						<ComboBox SelectedIndex="0" Width="175">
-							<ComboBoxItem>1</ComboBoxItem>
-							<ComboBoxItem>2</ComboBoxItem>
-							<ComboBoxItem>3</ComboBoxItem>
-							<ComboBoxItem>4</ComboBoxItem>
-							<ComboBoxItem>5</ComboBoxItem>
-						</ComboBox>
+						<ComboBox ItemsSource="{Binding seatNums}" SelectedItem="{Binding NumberOfSeats}" SelectedIndex="0" Width="175"/>
 
 						<!-- Boot Size -->
-						<TextBox/>
+						<TextBox Text="{Binding BootSize}"/>
 						
 						
 						<!-- TRUCK -->
 						<TextBox IsEnabled="False"/>
 
 						<!-- Load Capacity (in kg) -->
-						<TextBox/>
+						<TextBox Text="{Binding LoadCapacity}"/>
 
 						
 						<!-- BUS -->
 						<TextBox IsEnabled="False"/>
 
 						<!-- Seats -->
-						<TextBox/>
+						<TextBox Text="{Binding Seats}"/>
 
 						<!-- Standing Places -->
-						<TextBox/>
+						<TextBox Text="{Binding StandingPlaces}"/>
 
 						<!-- Toliet -->
-						<ComboBox SelectedIndex="0" Width="175">
-							<ComboBoxItem>Yes</ComboBoxItem>
-							<ComboBoxItem>No</ComboBoxItem>
-						</ComboBox>
+						<CheckBox IsChecked="{Binding Toilet}"/>
 
 						<!-- PRIVATE CAR -->
 						<TextBox IsEnabled="False"/>
 						
 						<!-- Isofix -->
-						<ComboBox SelectedIndex="0" Width="175">
-							<ComboBoxItem>Yes</ComboBoxItem>
-							<ComboBoxItem>No</ComboBoxItem>
-						</ComboBox>
+						<CheckBox IsChecked="{Binding IsoFix}"/>
 
 						<!-- COMMERCIAL CAR -->
 						<TextBox IsEnabled="False"/>
 
 						<!-- Load Capacity -->
-						<TextBox/>
+						<TextBox Text="{Binding Load}"/>
 						<!-- SafetyBar -->
-						<ComboBox SelectedIndex="0" Width="175">
-							<ComboBoxItem>Yes</ComboBoxItem>
-							<ComboBoxItem>No</ComboBoxItem>
-						</ComboBox>
+						<CheckBox IsChecked="{Binding SafetyBar}"/>
 
 						
 					</StackPanel>
@@ -247,6 +218,7 @@
 
 		<!-- Create Auction Button -->
 		<Button Content="Create Auction" Margin="10" 
+				Command="{Binding CreateAuction}"
 				HorizontalAlignment="Right" 
 				Grid.Column="1" Grid.Row="3" 
 				Foreground="White" Background="#FFE63070" 

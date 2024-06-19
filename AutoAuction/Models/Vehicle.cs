@@ -140,7 +140,7 @@ namespace AutoAuction.Models {
                 }
             }
         }
-
+        public Vehicle() { }
         public Vehicle(int id, string name, int kmDriven, string regCode, int year, bool towHook, double kmPerUnit, FuelTypes fuelType) {
             this.ID = id;
             this.Name = name;
