@@ -14,21 +14,21 @@ namespace AutoAuction.Models {
         // Has to be in the form of an email address
         public string UserName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public int Postcode { get; set; }
+        public string Postcode { get; set; }
 
         // Can't be negative
         public decimal Balance { get; set; }
 
         public User() { }
 
-        public User(int id, string username, int postcode, decimal balance) {
+        public User(int id, string username, string postcode, decimal balance) {
             this.Id = id;
             this.UserName = username;
             this.Postcode = postcode;
             this.Balance = balance;
         }
 
-        public User(int id, string username, string Password, int postcode, decimal balance) {
+        public User(int id, string username, string Password, string postcode, decimal balance) {
             this.Id = id;
             this.UserName = username;
             this.Password = Password;

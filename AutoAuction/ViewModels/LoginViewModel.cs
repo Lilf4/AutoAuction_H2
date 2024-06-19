@@ -30,9 +30,15 @@ namespace AutoAuction.ViewModels {
         }
 
         public void Login() {
-            if(MainWindowViewModel.Instance._IUser.Login(Username, Password) == null) {
+            User user = MainWindowViewModel.Instance._IUser.Login(Username, Password);
+
+
+            if (user == null) {
                 return;
             }
+
+            MainWindowViewModel.Instance.User = user;
+            
             MainWindowViewModel.Instance.CurrViewModel = new HomeViewModel();
         }
 

@@ -3,7 +3,7 @@
 
         public decimal CreditLimit { get; set; }
         public string CVR { get; set; }
-        public CoporateUser(int id, string username, int postcode, decimal balance, decimal creditLimit, string cvr) : base(id, username, postcode, balance) {
+        public CoporateUser(int id, string username, string postcode, decimal balance, decimal creditLimit, string cvr) : base(id, username, postcode, balance) {
             this.CreditLimit = creditLimit;
             this.CVR = cvr;
         }
