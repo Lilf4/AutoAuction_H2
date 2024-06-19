@@ -73,12 +73,13 @@ namespace AutoAuction.Models {
             errorMessage = string.Empty;
 
             if (string.IsNullOrWhiteSpace(password)) {
-                throw new Exception("Password should not be empty");
+                errorMessage = "Password should not be empty";
+                return false;
             }
 
             var hasNumber = new Regex(@"[0-9]+", RegexOptions.Compiled);
             var hasUpperChar = new Regex(@"[A-Z]+", RegexOptions.Compiled);
-            var hasMiniMaxChars = new Regex(@".{8,20}", RegexOptions.Compiled);
+            var hasMiniMaxChars = new Regex(@"^.{8,20}$", RegexOptions.Compiled);
             var hasLowerChar = new Regex(@"[a-z]+", RegexOptions.Compiled);
             var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]", RegexOptions.Compiled);
 
