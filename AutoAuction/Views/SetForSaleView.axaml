@@ -2,12 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1600" d:DesignHeight="900"
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:SetForSaleViewModel"
              x:Class="AutoAuction.Views.SetForSaleView"
 			 Foreground="White">
-	<Grid ShowGridLines="True">
+	<Grid ShowGridLines="False">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
@@ -33,10 +33,17 @@
 						VerticalAlignment="Center"
 						HorizontalAlignment="Center" 
 						Spacing="15">
-				<Label>Name</Label>
-				<Label>Milage</Label>
-				<Label>Reg. num</Label>
-				<Label>Year</Label>
+				<Label Content="Name"/>
+				<Label Content="Milage (km)"/>
+				<Label Content="Fuel Usage per km"/>
+				<Label Content="Fuel Type"/>
+				<Label Content="Reg. num"/>
+				<Label Content="Year"/>
+				<Label Content="Vehicle Type"/>
+				<Label Content="Towhook"/>
+				<Label Content="Motor Size"/>
+				<Label>Starting bid</Label>
+
 			</StackPanel>
 			
 			<StackPanel Grid.Column="1" 
@@ -45,37 +52,189 @@
 						HorizontalAlignment="Left" 
 						Spacing="5"
 						Width="175">
+				<!-- Name -->
+				<TextBox Watermark="eg. Skoda Octavia "/>
+				
+				<!-- Milage -->
+				<TextBox Watermark="127000"/>
+				
+				<!-- Fuel usage per km -->
+				<TextBox Watermark="12"/>
+				
+				<!-- Vehicle Type -->
+				<ComboBox SelectedIndex="0" Width="175">
+					<ComboBoxItem>Benzin</ComboBoxItem>
+					<ComboBoxItem>Diesel</ComboBoxItem>
+					<ComboBoxItem>Electric</ComboBoxItem>
+					<ComboBoxItem>Hydrogen</ComboBoxItem>
+				</ComboBox>
+				
+				<!-- Reg. Num. -->
+				<TextBox Watermark="27268188"/>
+				<!-- Year -->
+				<ComboBox Width="175" ItemsSource="{Binding YearRange}"/>
+				
+				<!-- Vehicle Type -->
+				<ComboBox SelectedIndex="0" Width="175">
+					<ComboBoxItem Content="-Select Type-"/>
+					<ComboBoxItem Content="Private Car"/>
+					<ComboBoxItem Content="Professional Car"/>
+					<ComboBoxItem Content="Bus"/>
+					<ComboBoxItem Content="Truck"/>
+				</ComboBox>
+				
+				<!-- Towhook -->
+				<ComboBox SelectedIndex="0" Width="175">
+					<ComboBoxItem>Yes</ComboBoxItem>
+					<ComboBoxItem>No</ComboBoxItem>
+				</ComboBox>
+				
+				<!-- Motor Size -->
+				<TextBox Watermark="7,4"/>
+
+				<!-- Starting Price-->
 				<TextBox/>
-				<TextBox/>
-				<TextBox/>
-				<ComboBox/>
 
 			</StackPanel>
 		</Grid>
 		
 
-		<StackPanel
-			Grid.Column="0"
-			Grid.Row="2"
-			VerticalAlignment="Center"
-			HorizontalAlignment="Center">
-			<WrapPanel Width="200">
-				<Label>Starting bid</Label>
-				<TextBox/>
+		
 
-			</WrapPanel>
-			<WrapPanel>
-				<Label>Close Auction</Label>
-				<CalendarDatePicker/>
-			</WrapPanel>
-		</StackPanel>
-
-		<Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" BorderBrush="Red" BorderThickness="2">
+		<Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Red" BorderThickness="2">
 			<Panel Grid.Column="1" Grid.Row="1">
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="1*"/>
+					</Grid.ColumnDefinitions>
+					
+					<Label Content="Vehicle Specific"/>
+
+					<StackPanel Grid.Column="0"
+								Grid.Row="1"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center"
+								Spacing="15">
+						
+						<Label Content="HEAVY VEHICLE"/>
+						<Label Content="Height"/>
+						<Label Content="Length"/>
+						<Label Content="Weight ( in kg)"/>
+						
+						<Label Content="PERSONAL VEHICLE"/>
+						<Label Content="Number of Seats"/>
+						<Label Content="Boot Size"/>
+						
+						<Label Content="TRUCK"/>
+						<Label Content="Load Capacity (in kg)"/>
+
+						<Label Content="BUS"/>
+						<Label Content="Seats"/>
+						<Label Content="Standing Places"/>
+						<Label Content="Toilets"/>
+
+						<Label Content="PRIVATE CAR"/>
+						<Label Content="Isofix"/>
+						
+
+						<Label Content="COMMERCIAL CAR"/>
+						<Label Content="Load Capacity (in kg)"/>
+						<Label Content="Safetybar"/>
+
+
+
+					</StackPanel>
+
+					<StackPanel Grid.Column="1"
+								Grid.Row="1"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Left"
+								Spacing="5"
+								Width="175">
+						
+						
+						<!-- HEAVY VEHICLE -->
+						<TextBox IsEnabled="False"/>
+
+						<!-- Height -->
+						<TextBox />
+
+						<!-- Length -->
+						<TextBox />
+
+						<!-- Weight -->
+						<TextBox />
+
+						
+						<!-- PERSONAL VEHICLE -->
+						<TextBox IsEnabled="False"/>
+
+						<!-- Number of Seats -->
+						<ComboBox SelectedIndex="0" Width="175">
+							<ComboBoxItem>1</ComboBoxItem>
+							<ComboBoxItem>2</ComboBoxItem>
+							<ComboBoxItem>3</ComboBoxItem>
+							<ComboBoxItem>4</ComboBoxItem>
+							<ComboBoxItem>5</ComboBoxItem>
+						</ComboBox>
+
+						<!-- Boot Size -->
+						<TextBox/>
+						
+						
+						<!-- TRUCK -->
+						<TextBox IsEnabled="False"/>
+
+						<!-- Load Capacity (in kg) -->
+						<TextBox/>
+
+						
+						<!-- BUS -->
+						<TextBox IsEnabled="False"/>
+
+						<!-- Seats -->
+						<TextBox/>
+
+						<!-- Standing Places -->
+						<TextBox/>
+
+						<!-- Toliet -->
+						<ComboBox SelectedIndex="0" Width="175">
+							<ComboBoxItem>Yes</ComboBoxItem>
+							<ComboBoxItem>No</ComboBoxItem>
+						</ComboBox>
+
+						<!-- PRIVATE CAR -->
+						<TextBox IsEnabled="False"/>
+						
+						<!-- Isofix -->
+						<ComboBox SelectedIndex="0" Width="175">
+							<ComboBoxItem>Yes</ComboBoxItem>
+							<ComboBoxItem>No</ComboBoxItem>
+						</ComboBox>
+
+						<!-- COMMERCIAL CAR -->
+						<TextBox IsEnabled="False"/>
+
+						<!-- Load Capacity -->
+						<TextBox/>
+						<!-- SafetyBar -->
+						<ComboBox SelectedIndex="0" Width="175">
+							<ComboBoxItem>Yes</ComboBoxItem>
+							<ComboBoxItem>No</ComboBoxItem>
+						</ComboBox>
+
+						
+					</StackPanel>
+				</Grid>
+				
 				
 			</Panel>
 		</Border>
 
+		<!-- Cancel Button -->
 		<Button Content="Cancel"
 				Command="{Binding Cancel}"
 				Margin="10" 
@@ -85,7 +244,8 @@
 				VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
 				FontSize="15" 
 				CornerRadius="10"/>
-		
+
+		<!-- Create Auction Button -->
 		<Button Content="Create Auction" Margin="10" 
 				HorizontalAlignment="Right" 
 				Grid.Column="1" Grid.Row="3" 

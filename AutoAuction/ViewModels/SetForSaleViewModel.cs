@@ -10,6 +10,7 @@ using static AutoAuction.Models.Vehicle;
 namespace AutoAuction.ViewModels {
     public class SetForSaleViewModel : ViewModelBase {
         public ObservableCollection<Bus> busesObservable { get; set; }
+
         public SetForSaleViewModel() {
             List<Bus> buses = new List<Bus> {
                 new Bus(1, "Bus1", 1000, "AB12345", 2020, false, 0.5, FuelTypes.Diesel, 4.5f, 10.0f, 5000, 50, 20, true),
@@ -22,5 +23,17 @@ namespace AutoAuction.ViewModels {
         {
             MainWindowViewModel.Instance.CurrViewModel = new HomeViewModel();
         }
+
+        public int[] YearRange
+        {
+            get
+            {
+                int x = 1900;
+                int y = DateTime.Now.Year;
+                int[] numbers = Enumerable.Range(x, y - x + 1).ToArray();
+                return numbers;
+            }
+        }
+
     }
 }
