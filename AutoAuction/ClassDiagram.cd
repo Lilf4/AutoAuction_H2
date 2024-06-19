@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AutoAuction.ViewModels.BuyerViewModel" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BuyerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.HomeViewModel" Collapsed="true">
+    <Position X="13.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAIAAAAAAAAABBAAAAAgAAA=</HashCode>
+      <FileName>ViewModels\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="18" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAQAAAAEAAAAAAAACAAAQAgAAAAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.MainWindowViewModel" Collapsed="true">
+    <Position X="22.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAEAAQAAAAIAAAACAAAAAAAAAAAQAAAABAAAAA=</HashCode>
+      <FileName>ViewModels\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.ProfileViewModel" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.SearchViewModel" Collapsed="true">
+    <Position X="15.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAABAAQACAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SearchViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.SellerViewModel" Collapsed="true">
+    <Position X="20.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SellerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.SetForSaleViewModel" Collapsed="true">
+    <Position X="24.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAJlkBAARYAQASQAQ0MgEAdAACA1AACxMAAAkQACwAA=</HashCode>
+      <FileName>ViewModels\SetForSaleViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.UserCreationViewModel" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBAAAAQwAAAgIAAAIAAAAAAAAAAAAAACAIAAAAAQA=</HashCode>
+      <FileName>ViewModels\UserCreationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.ViewModels.ViewModelBase" Collapsed="true">
+    <Position X="15.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.Auction" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAABAAAAAQAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Auction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.Bus" Collapsed="true">
+    <Position X="17" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAEAgAAAAAAAAAAAAABAAAAgQAAAAA=</HashCode>
+      <FileName>Models\Bus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.CoporateUser" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAEAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\CoporateUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.HeavyVehicle" Collapsed="true">
+    <Position X="18" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAEAAAAAABAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HeavyVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.PersonalCar" Collapsed="true">
+    <Position X="13.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAEAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PersonalCar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.PrivatePersonalCar" Collapsed="true">
+    <Position X="12.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAgAAABAAAAAQAAAAA=</HashCode>
+      <FileName>Models\PrivatePersonalCar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.PrivateUser" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PrivateUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.ProfessionelPersonalCar" Collapsed="true">
+    <Position X="14.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEQQAAAAAAAAAAAAABAAAAAQAAAAA=</HashCode>
+      <FileName>Models\ProfessionelPersonalCar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.Test" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\Test.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.Truck" Collapsed="true">
+    <Position X="19.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAQAAAAAAAAAAAAABAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Truck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.User" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAAAAAEAAoAgAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.Models.Vehicle" Collapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAABBAAQgAAEAAAAEAQAAAAEAAAQEAAAEQAAAIA=</HashCode>
+      <FileName>Models\Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.DAL.AuctionR" Collapsed="true">
+    <Position X="30" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAIAAIAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DAL\AuctionR.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AutoAuction.DAL.DBUtil" Collapsed="true">
+    <Position X="32.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>DAL\DBUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoAuction.DAL.UserR">
+    <Position X="34.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAEAAQAAAAAAA=</HashCode>
+      <FileName>DAL\UserR.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AutoAuction.DAL.VehicleR" Collapsed="true">
+    <Position X="32.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\VehicleR.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="AutoAuction.DAL.IAuction" Collapsed="true">
+    <Position X="37" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DAL\IAuction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoAuction.DAL.IUser" Collapsed="true">
+    <Position X="38.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAEAAQAAAAAAA=</HashCode>
+      <FileName>DAL\IUser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoAuction.DAL.IVehicle" Collapsed="true">
+    <Position X="37" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\IVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
