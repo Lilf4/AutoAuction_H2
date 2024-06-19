@@ -28,8 +28,8 @@
 					
 					<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<Label Content="Log in" Foreground="White" FontSize="24"/>
-						<TextBox Text="" Watermark="Email" Margin="0, 5, 0, 5"/>
-						<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5" PasswordChar="*"/>
+						<TextBox Text="{Binding Username}" Watermark="Email" Margin="0, 5, 0, 5"/>
+						<TextBox Text="{Binding Password}" Watermark="Password" Margin="0, 5, 0, 5" PasswordChar="*"/>
 						<WrapPanel Margin="0, 5, 0, 5">
 							<Label Content="Not registered?" Foreground="White"/>
 							<Button Content="Create user" Command="{Binding CreateUser}" CornerRadius="10" Width="95" Foreground="#FFE63070" Background="White" HorizontalContentAlignment="Center"/>
