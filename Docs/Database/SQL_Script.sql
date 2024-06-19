@@ -732,6 +732,23 @@ BEGIN
 END;
 GO
 
+--TODO WRITE DESCRIPTION--
+CREATE PROCEDURE GetUserDetails_sp
+	@Username VARCHAR(50)
+AS
+BEGIN
+	IF NOT EXISTS (SELECT 1 FROM CorporateUsers WHERE CorporateUsers.Username = @Username)
+	BEGIN
+		SELECT Users.*, CorporateUsers.* FROM Users LEFT JOIN CorporateUsers on Users.Username = CorporateUsers.Username WHERE Users.Username = @Username;
+		RETURN
+	END
+	ELSE
+	BEGIN
+		SELECT Users.*, PrivateUsers.* FROM Users LEFT JOIN PrivateUsers on Users.Username = PrivateUsers.Username WHERE Users.Username = @Username;
+		RETURN
+	END
+END
+
 -------------------------
 -- VIEWS - prefixed 'vw_'
 -------------------------

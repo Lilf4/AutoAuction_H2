@@ -16,7 +16,7 @@ public class MainWindowViewModel : ViewModelBase
     public IUser _IUser { get; set; }
     public IVehicle _IVehicle { get; set; }
 
-
+    public User User { get; set; }
     public static MainWindowViewModel Instance { get; set; }
 
     public MainWindowViewModel(IAuction _IAuction, IUser _IUser, IVehicle _IVehicle) {

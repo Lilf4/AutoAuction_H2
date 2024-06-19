@@ -18,7 +18,7 @@ namespace AutoAuction.ViewModels {
             set => this.RaiseAndSetIfChanged(ref observableUser, value);
         }
         public ProfileViewModel() {
-            ObservableUser = new(1, "Test@TestUser.com", 1234, 0);
+            ObservableUser = new(1, "Test@TestUser.com", "1234", 0);
         }
     }
 }
