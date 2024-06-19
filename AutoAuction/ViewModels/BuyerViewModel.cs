@@ -1,16 +1,20 @@
 ﻿using AutoAuction.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static AutoAuction.Models.Vehicle;
+using ReactiveUI;
 
 namespace AutoAuction.ViewModels {
     public class BuyerViewModel : ViewModelBase {
-        public ObservableCollection<Bus> busesObservable { get; set; }
-        public BuyerViewModel() {
+        
+        private Auction auction;
+        public Auction Auction {
+            get {
+                return auction;
+            } 
+            set { 
+                this.RaiseAndSetIfChanged(ref auction, value, "Auction");
+            } 
+        }
+        public BuyerViewModel(Auction auction) {
+            Auction = auction;
         }
     }
 }
