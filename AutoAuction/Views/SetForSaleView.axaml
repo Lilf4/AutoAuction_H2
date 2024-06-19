@@ -5,54 +5,54 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:SetForSaleViewModel"
-             x:Class="AutoAuction.Views.SetForSaleView">
-	<Grid ShowGridLines="False">
+             x:Class="AutoAuction.Views.SetForSaleView"
+			 Foreground="White">
+	<Grid ShowGridLines="True">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 		
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="1*"/>
 			<RowDefinition Height="4*"/>
 			<RowDefinition Height="2*"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="1*"/>
 		</Grid.RowDefinitions>
 
 
-		<Label VerticalAlignment="Center" Content="Set for sale"/>
-		<Grid>
+		<Label VerticalAlignment="Center" Content="Set for sale" FontSize="24"/>
+		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="1.5*"/>
+				<ColumnDefinition Width="2*"/>
 			</Grid.ColumnDefinitions>
 
-			<StackPanel Grid.Column="0" Grid.Row="1">
-				
+			<StackPanel Grid.Column="0" 
+						Grid.Row="1" 
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center" 
+						Spacing="15">
+				<Label>Name</Label>
+				<Label>Milage</Label>
+				<Label>Reg. num</Label>
+				<Label>Year</Label>
+			</StackPanel>
+			
+			<StackPanel Grid.Column="1" 
+						Grid.Row="1" 
+						VerticalAlignment="Center"	
+						HorizontalAlignment="Left" 
+						Spacing="5"
+						Width="175">
+				<TextBox/>
+				<TextBox/>
+				<TextBox/>
+				<ComboBox/>
+
 			</StackPanel>
 		</Grid>
-		<StackPanel 
-			Grid.Column="0"
-			Grid.Row="1"
-			VerticalAlignment="Center" 
-			HorizontalAlignment="Center">
-			<WrapPanel Width="200">
-				<Label>Name</Label>
-				<TextBox HorizontalAlignment="Right"/>
-			</WrapPanel>
-			<WrapPanel>
-				<Label>Milage</Label>
-				<TextBox/>
-			</WrapPanel>
-			<WrapPanel>
-				<Label>Reg. num</Label>
-				<TextBox/>
-			</WrapPanel>
-			<WrapPanel>
-				<Label>Year</Label>
-				<ComboBox></ComboBox>
-			</WrapPanel>
-		</StackPanel>
+		
 
 		<StackPanel
 			Grid.Column="0"
@@ -76,7 +76,23 @@
 			</Panel>
 		</Border>
 
-		<Button Margin="10" Grid.Column="0" Grid.Row="3">Cancel</Button>
-		<Button Margin="10" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="3">Create Auction</Button>
+		<Button Content="Cancel"
+				Command="{Binding Cancel}"
+				Margin="10" 
+				Grid.Column="0" Grid.Row="3" 
+				Foreground="#FFE63070" Background="White" 
+				Height="45" Width="135" 
+				VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+				FontSize="15" 
+				CornerRadius="10"/>
+		
+		<Button Content="Create Auction" Margin="10" 
+				HorizontalAlignment="Right" 
+				Grid.Column="1" Grid.Row="3" 
+				Foreground="White" Background="#FFE63070" 
+				Height="45" Width="135" 
+				VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+				FontSize="15" 
+				CornerRadius="10"/>
 	</Grid>
 </UserControl>

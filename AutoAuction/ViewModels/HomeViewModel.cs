@@ -25,5 +25,10 @@ namespace AutoAuction.ViewModels {
         public void Logout() {
             MainWindowViewModel.Instance.CurrViewModel = new LoginViewModel();
         }
+
+        public void Auction()
+        {
+            MainWindowViewModel.Instance.CurrViewModel = new SetForSaleViewModel();
+        }
     }
 }

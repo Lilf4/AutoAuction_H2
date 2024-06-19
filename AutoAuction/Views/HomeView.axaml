@@ -26,7 +26,7 @@
 				Orientation="Horizontal"
 				Spacing="15">
 					<Button Content="Search Auctions" CornerRadius="10" Foreground="White" Background="#FFE63070"/>
-					<Button Content="Create Auction" CornerRadius="10" Foreground="White" Background="#FFE63070"/>
+					<Button Content="Create Auction" CornerRadius="10" Command="{Binding Auction}" Foreground="White" Background="#FFE63070"/>
 					<Button Content="User Profile" CornerRadius="10" Command="{Binding Profile}" Foreground="White" Background="#FFE63070"/>
 			</StackPanel>
 

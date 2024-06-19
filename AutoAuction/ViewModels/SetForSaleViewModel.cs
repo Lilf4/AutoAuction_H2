@@ -17,5 +17,10 @@ namespace AutoAuction.ViewModels {
             };
             busesObservable = new ObservableCollection<Bus>(buses);
         }
+
+        public void Cancel()
+        {
+            MainWindowViewModel.Instance.CurrViewModel = new HomeViewModel();
+        }
     }
 }

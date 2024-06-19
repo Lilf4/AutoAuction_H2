@@ -34,7 +34,7 @@ namespace AutoAuction.ViewModels {
 
 
             if (user == null) {
-                return;
+                //return; Uncomment when in Production
             }
 
             MainWindowViewModel.Instance.User = user;
