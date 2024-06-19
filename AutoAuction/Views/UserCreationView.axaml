@@ -34,8 +34,8 @@
 					</WrapPanel>
 
 					<StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
-						<Button Content="Create" Background="#FFE63070" Foreground="White" CornerRadius="10"/>
-						<Button Content="Cancel" Command="" Background="White" Foreground="#FFE63070" CornerRadius="10"/>
+						<Button Content="Create" Command="{Binding CreateUser}" Background="#FFE63070" Foreground="White" CornerRadius="10"/>
+						<Button Content="Cancel" Command="{Binding Cancel}" Background="White" Foreground="#FFE63070" CornerRadius="10"/>
 					</StackPanel>
 				</StackPanel>
 		</Border>
