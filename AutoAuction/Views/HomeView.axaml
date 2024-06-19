@@ -25,15 +25,16 @@
 				HorizontalAlignment="Right"
 				Orientation="Horizontal"
 				Spacing="15">
-					<Button Content="Search Auctions" CornerRadius="10" Foreground="White" Background="#FFE63070"/>
+					<Button Content="Search Auctions" CornerRadius="10" Command="{Binding Search}" Foreground="White" Background="#FFE63070"/>
 					<Button Content="Create Auction" CornerRadius="10" Command="{Binding Auction}" Foreground="White" Background="#FFE63070"/>
 					<Button Content="User Profile" CornerRadius="10" Command="{Binding Profile}" Foreground="White" Background="#FFE63070"/>
+					<Button Content="Logout" CornerRadius="10" Command="{Binding Logout}" Foreground="White" Background="#FFE63070"/>
 			</StackPanel>
 
 			<Label VerticalAlignment="Center" Content="Your Auctions" Foreground="White" FontSize="26"/>
-			<DataGrid Grid.Row="1" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All" Background="#36373D" Foreground="White"/>
+			<DataGrid Grid.Row="1" ItemsSource="{Binding ownAuctions}" AutoGenerateColumns="True" GridLinesVisibility="All" Background="#36373D" Foreground="White"/>
 			<Label Grid.Row="2" VerticalAlignment="Center" Content="Your Bids" Foreground="White" FontSize="26"/>
-			<DataGrid Grid.Row="3" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All" Background="#36373D" Foreground="White"/>
+			<DataGrid Grid.Row="3" ItemsSource="{Binding ownAuctions}" AutoGenerateColumns="True" GridLinesVisibility="All" Background="#36373D" Foreground="White"/>
 
 		</Grid>
 </UserControl>

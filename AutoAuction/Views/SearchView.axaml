@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			  xmlns:vm="using:AutoAuction.ViewModels"
+			 x:DataType="vm:SearchViewModel"
+             x:Class="AutoAuction.Views.SearchView">
+	<Grid ShowGridLines="True">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="2*"/>
+		</Grid.ColumnDefinitions>
+		
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="8*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<Label
+			Grid.Row="0"
+			Grid.Column="0"
+			VerticalAlignment="Center"
+			Content="Search Auctions"
+			/>
+		<DataGrid 
+			Grid.Row="1" 
+			Grid.ColumnSpan="2" 
+			ItemsSource="{Binding Auctions}" 
+			SelectedItem="{Binding SelectedAuction}"
+			AutoGenerateColumns="False" 
+			GridLinesVisibility="All" 
+			Background="#36373D" 
+			Foreground="White">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Name" Binding="{Binding Vehicle.Name}"/>
+				<DataGridTextColumn Header="Seller" Binding="{Binding Seller.UserName}"/>
+				<DataGridTextColumn Header="Min Price" Binding="{Binding MinimumPrice}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		
+
+		<Button
+			Grid.Row="2"
+			Grid.Column="2"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Top"
+			Command="{Binding OpenAuction}"
+			Content="Open Auction"
+			/>
+		<Button
+			Grid.Row="3"
+			Grid.Column="0"
+			Command="{Binding Back}"
+			Content="Back"
+			/>
+		
+	</Grid>
+</UserControl>
