@@ -2,40 +2,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1600" d:DesignHeight="900"
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:HomeViewModel"
              x:Class="AutoAuction.Views.HomeView">
-	<Grid ShowGridLines="False">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="3*"/>
-			<ColumnDefinition Width="*"/>
-		</Grid.ColumnDefinitions>
 		
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="4*"/>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="4*"/>
-		</Grid.RowDefinitions>
+		<Grid ShowGridLines="False" Background="#24252B" Margin="12.5">
+			
+		
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="4*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="4*"/>
+			</Grid.RowDefinitions>
 
 		
-		<StackPanel 
-			Grid.Column="1"
-			Grid.Row="0"
-			Grid.RowSpan="2"
-			VerticalAlignment="Center" 
-			HorizontalAlignment="Center">
-				<Button Content="User Profile" Command="{Binding Profile}"/>
-				<Button Content="Create Auction"/>
-				<Button Content="Search Auctions"/>
-				<Button Command="{Binding Logout}" Content="Logout"/>
-		</StackPanel>
+			<StackPanel 
+				Grid.Row="0"
+				Grid.RowSpan="1"
+				VerticalAlignment="Center" 
+				HorizontalAlignment="Right"
+				Orientation="Horizontal"
+				Spacing="15">
+					<Button Content="Search Auctions" CornerRadius="10" Foreground="White" Background="#FFE63070"/>
+					<Button Content="Create Auction" CornerRadius="10" Foreground="White" Background="#FFE63070"/>
+					<Button Content="User Profile" CornerRadius="10" Command="{Binding Profile}" Foreground="White" Background="#FFE63070"/>
+			</StackPanel>
 
-		<Label VerticalAlignment="Center" Content="Your Auctions"/>
-		<DataGrid Grid.Row="1" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All"/>
-		<Label Grid.Row="2" VerticalAlignment="Center" Content="Your Bids"/>
-		<DataGrid Grid.Row="3" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All"/>
+			<Label VerticalAlignment="Center" Content="Your Auctions" Foreground="White" FontSize="26"/>
+			<DataGrid Grid.Row="1" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All" Background="#36373D" Foreground="White"/>
+			<Label Grid.Row="2" VerticalAlignment="Center" Content="Your Bids" Foreground="White" FontSize="26"/>
+			<DataGrid Grid.Row="3" ItemsSource="{Binding busesObservable}" AutoGenerateColumns="True" GridLinesVisibility="All" Background="#36373D" Foreground="White"/>
 
-	</Grid>
+		</Grid>
 </UserControl>

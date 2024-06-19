@@ -21,7 +21,16 @@
 
 
 		<Label VerticalAlignment="Center" Content="Set for sale"/>
-		
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<StackPanel Grid.Column="0" Grid.Row="1">
+				
+			</StackPanel>
+		</Grid>
 		<StackPanel 
 			Grid.Column="0"
 			Grid.Row="1"

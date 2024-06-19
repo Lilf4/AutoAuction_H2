@@ -8,7 +8,10 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/AutoAuction_Icon.ico"
         Title="AutoAuction"
-		Content="{Binding CurrViewModel}">
+		Content="{Binding CurrViewModel}"
+		Width="1600"
+		Height="900"
+		Background="#24252B">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,

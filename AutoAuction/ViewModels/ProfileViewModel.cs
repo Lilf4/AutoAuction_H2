@@ -20,5 +20,10 @@ namespace AutoAuction.ViewModels {
         public ProfileViewModel() {
             ObservableUser = new(1, "Test@TestUser.com", 1234, 0);
         }
+
+        public void Back()
+        {
+            MainWindowViewModel.Instance.CurrViewModel = new HomeViewModel();
+        }
     }
 }

@@ -2,24 +2,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1600" d:DesignHeight="900"
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:UserCreationViewModel"
-             x:Class="AutoAuction.Views.UserCreationView">
-	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-		<!--TODO: Insert postcode field-->
-		<Label>Create user</Label>
-		<TextBox Watermark="Username" Margin="0, 5, 0, 5" Text="{Binding User.UserName}"/>
-		<TextBox Watermark="Password" Margin="0, 5, 0, 5" Text="{Binding User.Password}"/>
-		<TextBox Watermark="Password (again)" Margin="0, 5, 0, 5" Text="{Binding RePassword}"/>
-		<TextBox Watermark="CPR/CVR" Margin="0, 5, 0, 5" Text="{Binding CVPR}"/>
-		<WrapPanel Margin="0, 5, 0, 5">
-			<RadioButton GroupName="AccType" IsChecked="{Binding IsPrivate}">Private</RadioButton>
-			<RadioButton GroupName="AccType" IsChecked="{Binding IsCorporate}">Corporate</RadioButton>
-		</WrapPanel>
-		<WrapPanel>
-			<Button Command="{Binding Cancel}" Content="Cancel"/>
-			<Button Command="{Binding CreateUser}" Content="Create"/>
-		</WrapPanel>
-	</StackPanel>
+             x:Class="AutoAuction.Views.UserCreationView"
+			 Foreground="White">
+	<Grid>
+		<Grid.Background>
+			<LinearGradientBrush StartPoint="10%,0%" EndPoint="90%,100%">
+				<GradientStop Color="#FFFE8704" Offset="0" />
+				<GradientStop Color="#FFE63070" Offset="1" />
+			</LinearGradientBrush>
+		</Grid.Background>
+		<Border Height="850" 
+				VerticalAlignment="Top" 
+				CornerRadius="0 0 180 0" 
+				Background="#24252B">
+
+				<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+					<Label Content="Create User" FontSize="24"/>
+					<TextBox Text="" Watermark="Email" Margin="0, 5, 0, 5"></TextBox>
+					<TextBox Text="" Watermark="Password" Margin="0, 5, 0, 5"></TextBox>
+					<TextBox Text="" Watermark="Password (again)" Margin="0, 5, 0, 5"></TextBox>
+					<WrapPanel Margin="0, 5, 0, 5" HorizontalAlignment="Center">
+						<RadioButton Content="Coporate" Foreground="White"/>
+						<RadioButton Content="Private" Foreground="White"/>
+					</WrapPanel>
+
+					<StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
+						<Button Content="Create" Background="#FFE63070" Foreground="White" CornerRadius="10"/>
+						<Button Content="Cancel" Command="" Background="White" Foreground="#FFE63070" CornerRadius="10"/>
+					</StackPanel>
+				</StackPanel>
+		</Border>
+	</Grid>
 </UserControl>

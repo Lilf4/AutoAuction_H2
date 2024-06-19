@@ -5,8 +5,9 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			  xmlns:vm="using:AutoAuction.ViewModels"
 			 x:DataType="vm:ProfileViewModel"
-             x:Class="AutoAuction.Views.ProfileView">
-	<Grid ShowGridLines="True"
+             x:Class="AutoAuction.Views.ProfileView"
+			 Foreground="White">
+	<Grid ShowGridLines="False"
 		  Margin="10">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="1*"/>
@@ -20,15 +21,26 @@
 			<RowDefinition Height="4*"/>
 		</Grid.RowDefinitions>
 
-		
-				
 
-		<Label 
+		<Button Content="Back"
+				Grid.Column="1"
+				Grid.Row="0"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Background="#FFE63070"
+				Foreground="White"
+				Width="90"
+				CornerRadius="10"
+				HorizontalContentAlignment="Center"
+				Command="{Binding Back}"/>	
+
+		<Label
 			VerticalAlignment="Center" 
 			Content="Your Profile"
-			FontWeight="Bold"/>
+			FontWeight="Bold"
+			FontSize="24"/>
 
-		<Grid Grid.Row="1" ShowGridLines="True"
+		<Grid Grid.Row="1" ShowGridLines="False"
 			  Margin="0,0,0,0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*" MinWidth="115"/>
@@ -46,6 +58,7 @@
 				<Label Content="{Binding ObservableUser.UserName}"/>
 				<Label Content="{Binding ObservableUser.Balance}"/>
 			</StackPanel>
+			
 		</Grid>
 		
 		<!--Auction Stats-->
@@ -54,9 +67,10 @@
 			Content="Auction Statistics" 
 			Grid.Row="2" 
 			FontWeight="Bold"
+			FontSize="24"
 			/>
 
-		<Grid Grid.Row="3" ShowGridLines="True">
+		<Grid Grid.Row="3" ShowGridLines="False">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*" MinWidth="115"/>
 				<ColumnDefinition Width="4*"/>
@@ -73,21 +87,15 @@
 				<Label Content="Test2"/>
 			</StackPanel>
 
-			<Button Content="Back"
-						Grid.Column="0"
-						Grid.Row="4"
-						VerticalAlignment="Bottom"
-						HorizontalAlignment="Center"/>
+			
 		</Grid>
 
-		
-		
-		<Grid Grid.Column="1">
-			<Label VerticalAlignment="Center" 
-				   Content="Bid History" 
-				   HorizontalAlignment="Center" 
-				   FontWeight="Bold"/>
-			<DataGrid AutoGenerateColumns="True"/>
-		</Grid>
+		<Label VerticalAlignment="Center"
+				Content="Bid History"
+				HorizontalAlignment="Center"
+				FontWeight="Bold"
+				Grid.Column="1"
+				FontSize="24"/>
+		<DataGrid AutoGenerateColumns="True" Background="#36373D" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"/>
 	</Grid>
 </UserControl>
